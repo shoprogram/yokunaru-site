@@ -14,6 +14,9 @@
 .headerTopNav :first-of-type {
   margin-right: 35px;
 }
+.headerTopNav a{
+  cursor: pointer;
+}
 .logIn{
   font-weight: bold;
   align-items: center;
@@ -23,6 +26,7 @@
 }
 .logIn:hover {
   color:black;
+  border-radius: 5px;
 }
 .signIn {
   align-items: center;
