@@ -1,6 +1,7 @@
 import React from 'react'
 import {useDispatch} from 'react-redux';
-import { signIn } from '../reducks/users/operations';
+import {push} from 'connected-react-router';
+// import { signIn } from '../reducks/users/operations';
 
 
 const Login = () => {
@@ -8,7 +9,7 @@ const Login = () => {
   return (
     <div>
       <h2>ログイン</h2>
-      <button onClick={() => dispatch(signIn())} >
+      <button onClick={() => dispatch(push('/'))} >
         ログインする
       </button>
     </div>
@@ -16,4 +17,4 @@ const Login = () => {
 }
 // {/* pushメソッドで引数に渡したURLに遷移する事ができる */}
 
-export default Login
+export default Login;
