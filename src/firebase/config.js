@@ -1,10 +1,10 @@
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAH0H9prvaKx9MFyb9Zja7PzACCUWPf5Zg",
-  authDomain: "yoiyou-app.firebaseapp.com",
-  projectId: "yoiyou-app",
-  storageBucket: "yoiyou-app.appspot.com",
-  messagingSenderId: "345906943608",
-  appId: "1:345906943608:web:33559c9d5f76474fc0ff8d",
-  measurementId: "G-FXJZXY7ZVG"
+  apiKey: "AIzaSyBvq7pgdFwYQNzG4bqjBtyuyekMOgTPCd0",
+  authDomain: "yokunaru-site-28acf.firebaseapp.com",
+  projectId: "yokunaru-site-28acf",
+  storageBucket: "yokunaru-site-28acf.appspot.com",
+  messagingSenderId: "939488431099",
+  appId: "1:939488431099:web:ca367f5ce540eb8102995e",
+  measurementId: "G-XM8YMJR70X"
 };
