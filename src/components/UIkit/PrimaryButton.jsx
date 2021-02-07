@@ -6,15 +6,15 @@ import {createStyles} from "@material-ui/core";
 const useStyles = makeStyles((theme) =>
     createStyles({
         "button": {
-            backgroundColor: theme.palette.primary.main,
+            backgroundColor: "red",
             color: '#000',
             fontSize: 16,
             height: 48,
             marginBottom: 16,
             width: 256,
-            "&:hover": {
-                backgroundColor: theme.palette.primary.light,
-            }
+            // "&:hover": {
+            //     backgroundColor: theme.palette.primary.light,
+            // }
         }
     })
 )

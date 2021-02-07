@@ -55,10 +55,10 @@ const SignUp = () => {
                 <PrimaryButton
                     label={"アカウントを登録する"}
                     onClick={() => dispatch(signUp(username, email, password, confirmPassword))}
-                />
-                <div className="module-spacer--small" />
-                <p className="u-text-small" onClick={() => dispatch(push('/signin'))}>アカウントをお持ちの方はこちら</p>
-            </div> */}
+                /> */}
+                {/* <div className="module-spacer--small" />
+                <p className="u-text-small" onClick={() => dispatch(push('/signin'))}>アカウントをお持ちの方はこちら</p> */}
+            {/* </div> */}
         </div>
     );
 };
