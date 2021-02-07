@@ -1,0 +1,9 @@
+.app {
+  height: 100vh;
+  
+}
+.appMain {
+  background-color: rgb(246,246,244);
+  padding: 16px;
+  display: flex;
+}

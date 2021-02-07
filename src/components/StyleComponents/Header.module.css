@@ -1,0 +1,38 @@
+.headerTop{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* position: relative; */
+  margin: 15px 24px;
+}
+.logo { 
+  width: 150px;
+}
+.headerTopNav {
+  display: flex;
+}
+.headerTopNav :first-of-type {
+  margin-right: 35px;
+}
+.logIn{
+  font-weight: bold;
+  align-items: center;
+  color: rgba(97, 89, 89, 0.89);
+  padding: 8px;
+  text-decoration: none;
+}
+.logIn:hover {
+  color:black;
+}
+.signIn {
+  align-items: center;
+  padding: 8px 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: rgb(117, 116, 48);
+  background-color: rgb(235, 225, 85);
+  border-radius: 0.5em;
+}
+.signIn:hover {
+  background-color: rgb(185, 178, 78);
+}
