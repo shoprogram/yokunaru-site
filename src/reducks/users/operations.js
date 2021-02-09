@@ -1,30 +1,39 @@
 import {signInAction} from "./actions";
 import {push} from 'connected-react-router';
-import {auth, db, FirebaseTimestamp} from '../../firebase/index';
+// import {auth, db, FirebaseTimestamp} from '../../firebase/index';
 
 
-export const signIn = () => {
-  return async (dispatch, getState) => {
-    const state = getState()
-    const isSignedIn = state.users.isSignedIn
+export const signIn = (email, password) => {
+//   return async (dispatch) => {
+//      // Validation
+//      if (email === "" || password === "" ) {
+//       alert("必須項目が未入力です")
+//       return false
+//     }
 
-    if (!isSignedIn) {
-      const url = 'https://api.github.com/users/deatiger'
+//     auth.signInWithEmailAndPassword(email, password)
+//     .then(result => {
+//       const user = result.user
 
-      const responese = await fetch(url)
-                              .then(res => res.json())
-                              .catch(() => null)
+//       if(user) {
+//         const uid = user.uid
 
-      const username = responese.login
+//         db.collection('users').doc(uid).get()
+//          .then(snapshot => {
+//           const data =  snapshot.data()
 
-      dispatch(signInAction({
-        isSignedIn: true,
-        uid:"000001",
-        username: username
-      }))
-      dispatch(push('/'))
-    }
-  }
+//          dispatch(signInAction({
+//            isSugnedIn: true,
+//            role: data.role,
+//            uid: uid,
+//            username: data.username
+//          }))
+
+//          dispatch(push('/'))
+//         })
+//       }
+//     })
+//   }
 }
 
 export const signUp = (username, email, password, confirmPassword) => {
@@ -40,27 +49,27 @@ export const signUp = (username, email, password, confirmPassword) => {
   //     return false
   //   }
     
-  //   return auth.createUserWithEmailAndPassword(email, password)
-  //   .then(result => {
-  //       const user = result.user
-  //       if(user) {
-  //         const uid = user.uid
-  //         const timestamp = FirebaseTimestamp.now()
+  //   // return auth.createUserWithEmailAndPassword(email, password)
+  //   // .then(result => {
+  //   //     const user = result.user
+  //   //     if(user) {
+  //   //       const uid = user.uid
+  //   //       const timestamp = FirebaseTimestamp.now()
 
-  //         const userInitialData = {
-  //           created_at: timestamp,
-  //           email: email,
-  //           role:"customer",
-  //           uid: uid,
-  //           updated_at:timestamp,
-  //           username: username
-  //         }
+  //   //       const userInitialData = {
+  //   //         created_at: timestamp,
+  //   //         email: email,
+  //   //         role:"customer",
+  //   //         uid: uid,
+  //   //         updated_at:timestamp,
+  //   //         username: username
+  //   //       }
 
-  //         db.collection('users').doc(uid).set(userInitialData)
-  //           .then(() => {
-  //             dispatch(push('/'))
-  //           })
+  //   //       db.collection('users').doc(uid).set(userInitialData)
+  //   //         .then(() => {
+  //   //           dispatch(push('/'))
+  //           // })
   //       }
-    // })
+  //   })
   // }
 }
