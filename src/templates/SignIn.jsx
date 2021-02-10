@@ -34,9 +34,9 @@ const SignIn = () => {
             <div className="module-spacer--medium" />
             <div className="center">
                 <PrimaryButton label={"ログイン"} onClick={() => dispatch(signIn(email, password))} />
-                {/* <div className="module-spacer--small" /> */}
-                {/* <p className="u-text-small" onClick={() => dispatch(push('/signin/reset'))}>パスワードを忘れた方はこちら</p>
-                <p className="u-text-small" onClick={() => dispatch(push('/signup'))}>アカウント登録がまだですか？</p> */}
+                <div className="module-spacer--small" />
+                <p className="u-text-small" onClick={() => dispatch(push('/signin/reset'))}>パスワードを忘れた方はこちら</p>
+                <p className="u-text-small" onClick={() => dispatch(push('/signup'))}>アカウント登録がまだですか？</p>
             </div>
         </div>
     );
