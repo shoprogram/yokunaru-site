@@ -11,7 +11,7 @@ const HeaderComponent = () => {
       <div className={ Styles.headerTop }>
         <img src={ Logo } alt="logo" className={ Styles.logo }/>
         <div className={ Styles.headerTopNav}>
-          <a className={ Styles.logIn} onClick={() => dispatch(push("login"))}>ログイン</a>
+          <a className={ Styles.logIn} onClick={() => dispatch(push("signin"))}>ログイン</a>
           <a className={ Styles.signIn} onClick={() => dispatch(push("signup"))}>新規登録</a>
         </div>
       </div>

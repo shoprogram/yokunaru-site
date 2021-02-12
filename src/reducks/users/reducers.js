@@ -8,6 +8,10 @@ export const UsersReducer = (state = initialState.users, action) => {
         ...state,//actionsの中に存在しなければ、initialStateにある初期状態のStateをとってくる
         ...action.payload
       }
+      case Actions.SIGN_OUT:
+      return {
+        ...action.payload
+      }
       default:
           return state
   }
