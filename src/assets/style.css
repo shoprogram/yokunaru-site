@@ -33,6 +33,15 @@
     width: calc(100% - 2rem);
 }
 
+.c-section-container-wide {
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 1rem;
+    height: auto;
+    width: calc(100% - 2rem);
+}
+/* これ作った */
+
 .c-section__loading {
     align-items: center;
     background: rgba(255, 255, 255, 0.7);
@@ -74,6 +83,7 @@
 .p-grid__list-images {
     display: flex;
     flex-flow: wrap;
+    width: 56.25%;
 }
 
 .p-grid__list-images > .p-media__thumb {

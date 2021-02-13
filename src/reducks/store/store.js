@@ -10,12 +10,13 @@ import thunk from 'redux-thunk';
 
 //connected-react-router(Reduxのstoreでルーティングを管理:eact-router v4,v5と互換性がある)
 
-
+import {ProductsReducer} from '../products/reducers';
 import {UsersReducer} from '../users/reducers';
 
 export default function createStore(history) {
   return reduxCreateStore(
     combineReducers({
+      products: ProductsReducer,
       router: connectRouter(history), 
       users: UsersReducer
     }),
