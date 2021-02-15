@@ -1,20 +1,23 @@
-import React, {useCallback, useState} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import {PrimaryButton, TextInput, SelectBox} from "../components/UIkit";
 import { useDispatch } from "react-redux";
 import {saveProduct} from "../reducks/products/operations";
 import ImageArea from '../components/Products/ImageArea';
+import { db } from '../firebase';
 
 const ProductEdit = () => {
   const dispatch = useDispatch();
+  let id = window.location.pathname.split('/product/edit')[1];
   
+  if(id !=="") {
+    id = id.split('/')[1];
+  }
   const [title, setTitle] = useState(""),
         [images, setImages] = useState([]),
         [why, setWhy] = useState(""),
         [what, setWhat] = useState(""),
         [description, setDescription] = useState(""),
         [category, setCategory] = useState("");
-        
-
 
   const inputTitle = useCallback((event) => {
     setTitle(event.target.value)
@@ -40,6 +43,21 @@ const ProductEdit = () => {
     {id: "sports", name: "スポーツ"},
     {id: "other", name: "その他"},
   ];
+
+  useEffect(() => {
+    if(id !== ""){
+      db.collection('products').doc(id).get()
+      .then(snapshot => {
+        const data = snapshot.data();
+        setTitle(data.title);
+        setWhy(data.why);
+        setWhat(data.what);
+        setDescription(data.description);
+        setImages(data.images);
+        setCategory(data.category);
+      })
+    }
+  },[]);
 
   return (
     <section>
@@ -71,7 +89,7 @@ const ProductEdit = () => {
                 <div className="center">
                     <PrimaryButton
                         label={"内容を投稿"}
-                        onClick={() => dispatch(saveProduct(title, why, what, description, category, images))}
+                        onClick={() => dispatch(saveProduct(id, title, why, what, description, category, images))}
                     />
                 </div>
             </div>

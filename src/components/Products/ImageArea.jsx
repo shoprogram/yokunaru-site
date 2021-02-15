@@ -50,6 +50,11 @@ const uploadImage = useCallback((event) => {
   })
 }, [props.setImages])
 
+//オブジェクトが空かどうか判定する処理
+const isEmpty = (obj) => {
+  return !Object.keys(obj).length;
+}
+
   return (
     <div>
       <div className="p-grid__list-images">
@@ -58,15 +63,20 @@ const uploadImage = useCallback((event) => {
                     <ImagePreview delete={deleteImage} id={image.id} path={image.path} key={image.id} /> )
                 )}
       </div>
-       <div className="u-text-left">
+      {isEmpty(images) === true && (
+        <div className="u-text-left">
                 <span>メイン画像を登録する</span>
                 <IconButton className={classes.icon}>
                     <label>
                         <AddPhotoAlternateIcon />
-                        <input className="u-display-none" type="file" id="image" onChange={e => uploadImage(e)}/>
+                          <input className="u-display-none" type="file" id="image" onChange={e => uploadImage(e)}/>
                     </label>
                 </IconButton>
             </div>
+      )} 
+      {isEmpty(images) === false  && (
+        <p>メイン画像は1枚のみ登録できます</p>
+      )}
     </div>
   )
 }
