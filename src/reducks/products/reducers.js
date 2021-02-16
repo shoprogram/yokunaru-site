@@ -3,15 +3,12 @@ import initialState from '../store/initialState';
 
 export const ProductsReducer = (state = initialState.products, action) => {
   switch (action.type) {
-    case Actions.SIGN_IN:
+    case Actions.FETCH_PRODUCTS:
       return {
-        ...state,//actionsの中に存在しなければ、initialStateにある初期状態のStateをとってくる
-        ...action.payload
-      }
-      case Actions.SIGN_OUT:
-      return {
-        ...action.payload
-      }
+        ...state,
+        list: [...action.payload]
+
+      };
       default:
           return state
   }

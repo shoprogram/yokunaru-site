@@ -84,7 +84,6 @@ const ProductEdit = () => {
                     label={"カテゴリー"} options={categories} required={true} select={setCategory} value={category}
                 />
                 <div className="module-spacer--small"/>
-                {/* <SetSizesArea sizes={sizes} setSizes={setSizes} /> */}
                 <div className="module-spacer--small" />
                 <div className="center">
                     <PrimaryButton
