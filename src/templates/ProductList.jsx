@@ -15,14 +15,14 @@ const ProductList = () => {
 
   return (
      <section className="c-section-wrapin">
-       <div className="p-grid_row">
+       {/* <div className="p-grid_row"> */}
     {products.length > 0 && (
       products.map(product => (
-        <ProductCard key={product.id} />
+        <ProductCard key={product.id} id={product.id} images={product.images} />
       ))
     )}
-       </div>
-     </section>
+       {/* </div> */}
+    </section>
   )
 }
 

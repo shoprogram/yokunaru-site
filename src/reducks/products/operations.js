@@ -35,7 +35,7 @@ export const saveProduct = (id, title, why, what, description, category, images)
 
     if (id ==="") {
       const ref = productsRef.doc().set(data, {merge: true});
-      const id = ref.id;
+      id = ref.id;
       data.id = id;
       data.created_at = timestamp
     }

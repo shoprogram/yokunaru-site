@@ -18,11 +18,13 @@
 }
 .c-section-wrapin {
     margin: 0 auto;
-    max-width: 575px;
+    /* max-width: 100%; */
     position: relative;
     padding: 0 1rem;
     text-align: center;
     width: 100%;
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .c-section-container {
@@ -171,7 +173,8 @@
 
     /*********** Section ***********/
     .c-section-wrapin {
-        max-width: 1024px;
+        max-width: 100%;
+        /* 元1024px */
     }
 }
 
