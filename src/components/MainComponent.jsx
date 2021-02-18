@@ -4,7 +4,7 @@ import Styles from './StyleComponents/Main.module.css';
 const MainComponent = () => {
   return (
     <div className={ Styles.mainContainer }>
-      <h3>記事一覧</h3>
+      <h1 className={Styles.title}>サイシンキジ</h1>
       <ProductList />
     </div>
   )

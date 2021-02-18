@@ -1,3 +1,6 @@
+.headerStyle {
+  border-bottom: 0.1px solid rgb(172, 172, 168, 0.3);
+}
 .headerTop{
   display: flex;
   justify-content: space-between;

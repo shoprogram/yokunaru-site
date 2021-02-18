@@ -18,7 +18,7 @@
 }
 .c-section-wrapin {
     margin: 0 auto;
-    /* max-width: 100%; */
+    max-width: 575px;
     position: relative;
     padding: 0 1rem;
     text-align: center;
@@ -173,8 +173,8 @@
 
     /*********** Section ***********/
     .c-section-wrapin {
-        max-width: 100%;
-        /* 元1024px */
+        max-width: 1480px;
+        height: 100%;
     }
 }
 

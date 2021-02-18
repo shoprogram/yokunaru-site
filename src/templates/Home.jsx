@@ -10,16 +10,16 @@ import {signOut} from '../reducks/users/operations';
 const Home = () => {
   const dispatch = useDispatch();
   const selector = useSelector(state => state);
-  const uid = getUserId(selector);
-  const username = getUsername(selector)
+  // const uid = getUserId(selector);
+  // const username = getUsername(selector)
 
   return (
     <div className={ Styles.app }>
       <header className={ Styles.appHeader }>
         <HeaderComponent />
-        <p>ユーザーID:{uid}</p>
+        {/* <p>ユーザーID:{uid}</p>
         <p>ユーザー名：{username}</p>
-        <button onClick={() => dispatch(signOut())}>ログアウト</button>
+        <button onClick={() => dispatch(signOut())}>ログアウト</button> */}
       </header>
       <body className={ Styles.appMain }>
         <NavComponent />

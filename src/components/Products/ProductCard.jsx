@@ -27,12 +27,12 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up('sm')]: {
       margin: 16,
-      width: 'calc(50% - 32px)'
+      width: 'calc(25% - 32px)'
     }
   },
   media: {
     height: 0,
-    paddingTop: '30%', 
+    paddingTop: '60%', 
     cursor: "pointer",
   },
   expand: {
@@ -46,12 +46,12 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
   titleStyle: {
-   fontWeight: '600',
-   fontSize: '1.5em',
+   fontWeight: 'bold',
+   fontSize: '1.3em',
    cursor: "pointer",
   },
   titeleSpace: {
-    padding: "0",
+    padding: 0,
   },
   avatar: {
     backgroundColor: yellow[300],
@@ -59,9 +59,6 @@ const useStyles = makeStyles((theme) => ({
   flex: {
     display: "flex",
     justifyContent: "spase-bitween",
-  },
-  iconSpace: {
-    padding: "0px",
   },
   descriptionSpace: {
     // maxWidth: "350px",
@@ -73,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     textOverflow: "ellipsis",
     display: "-webkit-box",
     lineHeight: "18px",
-    maxHeight: "calc(18px*5)",
+    maxHeight: "calc(18px*3)",
     cursor: "pointer",
   },
 }));
@@ -114,26 +111,26 @@ const ProductCard = (props) => {
         </Typography>
       </CardContent>
       <div className={classes.flex}>
-      <CardHeader
+      {/* <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
          icon   
           </Avatar>
         }
-        // action={
-        //   <IconButton aria-label="settings">
-        //     <MoreVertIcon />
-        //   </IconButton>
-        // }
+        action={
+          <IconButton aria-label="settings">
+            <MoreVertIcon />
+          </IconButton>
+        }
 
-        // title={} ここにアバターnameをいれる
-        // subheader={props.updated_at}
+        title={} ここにアバターnameをいれる
+        subheader={props.updated_at}
       />
       <CardActions className={classes.iconSpace}>
         <IconButton aria-label="add to favorites">
         </IconButton>
         <FavoriteIcon />
-      </CardActions>
+      </CardActions> */}
       </div>
     </Card>
   );

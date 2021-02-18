@@ -15,7 +15,6 @@ const HeaderComponent = () => {
           <a className={ Styles.signIn} onClick={() => dispatch(push("signup"))}>新規登録</a>
         </div>
       </div>
-      
     </div>
   )
 }
