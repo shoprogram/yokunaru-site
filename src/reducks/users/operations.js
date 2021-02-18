@@ -20,7 +20,7 @@ export const listenAuthState = () => {
           }))
         })
       } else {
-        dispatch(push('/signin'))
+        dispatch(push('/before'))
       }
     })
   }
@@ -119,7 +119,7 @@ export const signOut = () => {
     auth.signOut()
       .then(() => {
         dispatch(signOutAction());
-        dispatch(push('/signin'));
+        dispatch(push('/before'));
       })
   }
 }

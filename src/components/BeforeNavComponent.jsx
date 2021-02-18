@@ -3,7 +3,7 @@ import Styles from './StyleComponents/Nav.module.css';
 import {useDispatch} from 'react-redux';
 import { push } from 'connected-react-router';
 
-const NavComponent = () => {
+const BeforeNavComponent = () => {
   const dispatch = useDispatch();
 
   return (
@@ -17,15 +17,13 @@ const NavComponent = () => {
         </section>
         <section className={ Styles.bottomNavContaints}>
           <h3>ヨクスル</h3>
-          <a href="#" 
-          className={ Styles.post }
-          onClick={() => dispatch(push('/product/edit'))}
-          >トウコウ</a>
-          <a href="#" className={ Styles.anser }>カイトウ</a>
+          <a onClick={() => dispatch(push('/signin'))}>
+            ログインするとヨクスル(投稿する)ことができます！
+          </a>
         </section>
       </article>
     </div>
   )
 }
 
-export default NavComponent
+export default BeforeNavComponent

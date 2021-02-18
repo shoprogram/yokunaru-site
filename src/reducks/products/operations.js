@@ -4,20 +4,22 @@ import { FirebaseTimestamp, db } from '../../firebase'
 import { fetchProductsAction } from './actions'
 
 const productsRef = db.collection('products')
+//firestore(db)のusesではなくproductsからデータをとってくる
 
 export const fetchProducts = () => {
   return async (dispatch) => {
     productsRef.orderBy('updated_at', 'desc').get()
-      .then(snapshots => {
-        const productList =[]
-        snapshots.forEach(snapshot => {
-          const product = snapshot.data();
-          productList.push(product)
-        })
-        dispatch(fetchProductsAction(productList))
+    .then(snapshots => {
+      const productList =[]
+      snapshots.forEach(snapshot => {
+        const product = snapshot.data();
+        productList.push(product)
       })
+      dispatch(fetchProductsAction(productList))
+    })
   }
 }
+console.log(fetchProducts)
 
 export const saveProduct = (id, title, why, what, description, category, images) => {
   return async (dispatch) => {
@@ -34,13 +36,13 @@ export const saveProduct = (id, title, why, what, description, category, images)
     }
 
     if (id ==="") {
-      const ref = productsRef.doc().set(data, {merge: true});
+      const ref = productsRef.doc();
       id = ref.id;
       data.id = id;
       data.created_at = timestamp
     }
 
-    return productsRef.doc(id).set(data)
+    return productsRef.doc(id).set(data, {merge: true})
       .then(() => {
         dispatch(push('/'))
       }).catch((error) => {

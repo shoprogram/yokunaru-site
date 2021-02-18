@@ -18,7 +18,7 @@ const ProductList = () => {
        {/* <div className="p-grid_row"> */}
     {products.length > 0 && (
       products.map(product => (
-        <ProductCard key={product.id} id={product.id} images={product.images} />
+        <ProductCard key={product.id} id={product.id} images={product.images} title={product.title} description={product.description} updated_at={product.updated_at}/>
       ))
     )}
        {/* </div> */}
