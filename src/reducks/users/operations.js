@@ -119,7 +119,7 @@ export const signOut = () => {
     auth.signOut()
       .then(() => {
         dispatch(signOutAction());
-        dispatch(push('/before'));
+        dispatch(push('/'));
       })
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import {Route, Switch} from 'react-router';
 import Auth from './Auth';
+import { signOut } from './reducks/users/operations';
 import {BeforeSignInHome, Home, SignUp, SignIn, Reset, ProductEdit, ProductList} from './templates';
 
 const Router = () => {
@@ -13,6 +14,7 @@ const Router = () => {
         <Route exact path={"/before"} component={BeforeSignInHome} />
         <Auth>
           <Route exact path={"(/)?"} component={Home} />
+          <Route exact path={"/signout"} component={signOut} />
           {/* <Route exact path={"/product/edit"} component={ProductEdit} /> */}
           <Route path={"/product/edit(/:id)?"} component={ProductEdit} />
         </Auth>

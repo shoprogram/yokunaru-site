@@ -49,6 +49,12 @@ const useStyles = makeStyles((theme) => ({
    fontWeight: 'bold',
    fontSize: '1.3em',
    cursor: "pointer",
+    wordBreak: "break-all",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    display: "-webkit-box",
+    lineHeight: "1.3em",
+    maxHeight: "calc(1.3em*1)",
   },
   titeleSpace: {
     padding: 0,
@@ -61,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "spase-bitween",
   },
   descriptionSpace: {
-    // maxWidth: "350px",
+    maxWidth: "350px",
     letterSpacing: "0.05em",
     fontSize: "small",
     color: "gray",
@@ -111,6 +117,14 @@ const ProductCard = (props) => {
         </Typography>
       </CardContent>
       <div className={classes.flex}>
+      <CardActions disableSpacing>
+        <IconButton aria-label="add to favorites">
+          <FavoriteIcon />
+        </IconButton>
+        <IconButton aria-label="share">
+          <ShareIcon />
+        </IconButton>
+      </CardActions>
       {/* <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>

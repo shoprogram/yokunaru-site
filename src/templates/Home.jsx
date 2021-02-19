@@ -18,8 +18,7 @@ const Home = () => {
       <header className={ Styles.appHeader }>
         <HeaderComponent />
         {/* <p>ユーザーID:{uid}</p>
-        <p>ユーザー名：{username}</p>
-        <button onClick={() => dispatch(signOut())}>ログアウト</button> */}
+        <p>ユーザー名：{username}</p> */}
       </header>
       <body className={ Styles.appMain }>
         <NavComponent />
