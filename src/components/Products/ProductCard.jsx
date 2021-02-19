@@ -100,8 +100,8 @@ const ProductCard = (props) => {
         onClick={() => dispatch(push('/product/' + props.id))}
       />
       <CardContent 
-      className={classes.titleSpace}
-      onClick={() => dispatch(push('/product/' + props.id))}            
+        className={classes.titleSpace} 
+        onClick={() => dispatch(push('/product/' + props.id))}           
       >
         <Typography 
         className={classes.titleStyle}

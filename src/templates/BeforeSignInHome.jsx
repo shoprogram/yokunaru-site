@@ -16,9 +16,6 @@ const BeforeSignInHome = () => {
     <div className={ Styles.app }>
       <header className={ Styles.appHeader }>
         <BeforeHeaderComponent />
-        {/* <p>ユーザーID:{uid}</p>
-        <p>ユーザー名：{username}</p>
-        <button onClick={() => dispatch(signOut())}>ログアウト</button> */}
       </header>
       <body className={ Styles.appMain }>
         <BeforeNavComponent />
