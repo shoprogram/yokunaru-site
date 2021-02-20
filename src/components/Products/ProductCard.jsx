@@ -97,21 +97,21 @@ const ProductCard = (props) => {
       <CardMedia
         className={classes.media}
         image={props.images[0].path}
-        onClick={() => dispatch(push('/product/' + props.id))}
+        onClick={() => dispatch(push('/product/'+props.id))}
       />
       <CardContent 
         className={classes.titleSpace} 
-        onClick={() => dispatch(push('/product/' + props.id))}           
+        onClick={() => dispatch(push('/product/'+props.id))}           
       >
         <Typography 
         className={classes.titleStyle}
-        onClick={() => dispatch(push('/product/' + props.id))} 
+        onClick={() => dispatch(push('/product/'+props.id))} 
         >
           {props.title}
         </Typography>
         <Typography 
         className={classes.descriptionSpace}
-        onClick={() => dispatch(push('/product/' + props.id))} 
+        onClick={() => dispatch(push('/product/'+props.id))} 
         >
           {props.description}
         </Typography>

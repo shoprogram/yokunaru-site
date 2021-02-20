@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useCallback} from 'react'
 import { db } from '../firebase';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,18 +21,21 @@ const useStyles = makeStyles((theme) => ({
 
 const ProductDetail = () => {
   const classes = useStyles();
-  const selector = useSelector((state) => state);
+  const dispatch = useDispatch()
+  const selector = useSelector(state => state);
   const path = selector.router.location.pathname;
-  const id = path.split('/prpduct/')[1];
+  const id = path.split('/')[2];
+  // console.log(path.split('/'));
+  // console.log(path);
+  // console.log(id);
 
   const [product, setProduct] = useState(null);
 
 
   useEffect(() => {
-    db.collection('products').doc(id).get()
-      .then(doc => {
-        const data = doc.data();
-        setProduct(data)
+    db.collection('products').doc(id).get().then(doc => {
+      const data = doc.data()
+      setProduct(data)
       })
   },[]);
   
