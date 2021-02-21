@@ -35,17 +35,20 @@ const ProductDetail = () => {
   useEffect(() => {
     db.collection('products').doc(id).get().then(doc => {
       const data = doc.data()
-      setProduct(data)
+      setProduct({data})
       })
   },[]);
   
+  console.log(product);
+  // console.log(product.data.title);
+  // console.log(product.data.images[0].path)
   return (
     <section className="c-section-wrapin">
       {product && (
         <div className="p-grid-row">
-          <h2 className={classes.detail}>{product.title}</h2>
-          <p className={classes.detail}>{product.images}</p>
-          <p className={classes.detail}>{product.description}</p>
+          <h2 className={classes.detail}>{product.data.title}</h2>
+          {/* <p className={classes.detail}>{product.data.images[0].path}</p> */}
+          <p className={classes.detail}>{product.data.description}</p>
 
         </div>
       )}

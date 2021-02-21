@@ -8,21 +8,25 @@ import createStore from './reducks/store/store';
 // import * as serviceWorker from './serviceWorker';
 import {ConnectedRouter} from "connected-react-router";
 import * as History from "history";
+import {MuiThemeProvider} from '@material-ui/core';
+import {theme} from "./assets/theme";
 
 const history = History.createBrowserHistory();
 // historyを作って↓に渡している
 export const store = createStore(history);
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}> 
     {/* App component全体でstoreの値が参照できるようになる */}
       <ConnectedRouter history={history}>
         {/* ブラウザのURL遷移の履歴が管理できるようになる */}
-      <App />
+        <MuiThemeProvider theme={theme}>
+          <App />
+        </MuiThemeProvider>
       </ConnectedRouter>
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 
