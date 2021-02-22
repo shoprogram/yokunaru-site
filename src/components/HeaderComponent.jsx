@@ -10,7 +10,7 @@ const HeaderComponent = () => {
   return (
     <div className={ Styles.headerStyle } >
       <div className={ Styles.headerTop }>
-        <img src={ Logo } alt="logo" className={ Styles.logo }/>
+        <img src={ Logo } alt="logo" className={ Styles.logo } onClick={() => dispatch(push("/"))}/>
         <div className={ Styles.headerTopNav}>
           <a className={ Styles.logIn} onClick={() => dispatch(signOut())}>ログアウト</a>
           <a className={ Styles.signIn} onClick={() => dispatch(push("/signup"))}>新規登録</a>

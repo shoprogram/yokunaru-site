@@ -3,10 +3,11 @@ import {PrimaryButton, TextInput} from "../components/UIkit";
 import {useDispatch} from "react-redux";
 import {signIn} from "../reducks/users/operations";
 import {push} from "connected-react-router"
+import { auth, provider } from '../firebase';
+import { Button } from '@material-ui/core';
 
 const SignIn = () => {
     const dispatch = useDispatch();
-
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -18,6 +19,11 @@ const SignIn = () => {
     const inputPassword = useCallback((e) => {
         setPassword(e.target.value)
     },[]);
+
+    const signInGoogle = async () => {
+        await auth.signInWithPopup(provider).catch((err) => alert(err.message));
+        dispatch(push('/'))
+    };
 
     return (
         <div className="c-section-container">
@@ -38,6 +44,18 @@ const SignIn = () => {
                 <p className="u-text-small" onClick={() => dispatch(push('/signin/reset'))}>パスワードを忘れた方はこちら</p>
                 <p className="u-text-small" onClick={() => dispatch(push('/signup'))}>アカウント登録がまだのかたはこちら</p>
             </div>
+            <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                // classNmae={classes.submit}
+                onClick={signInGoogle}
+                // onClick={() => dispatch(push('/'))}
+                
+
+            >
+            SignIn with Google
+            </Button>
         </div>
     );
 };

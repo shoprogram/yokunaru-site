@@ -2,6 +2,8 @@ import React, {useState, useEffect, useCallback} from 'react'
 import { db } from '../firebase';
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from '@material-ui/core';
+import HeaderComponent from '../components/HeaderComponent';
+import { BorderLeftTwoTone } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   detail: {
@@ -14,14 +16,30 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
         margin: '0 auto',
         height: 'auto',
-        width: 400
+        width: '620px',
     },
-},
+  },
+  main : {
+
+  },
+  images: {
+    width: '100%',
+    height: 'auto',
+    paddingTop: '30px',
+    paddingBottom: '30px',
+    margin: '0 auto',
+    textAlign: 'center',
+  },
+  title: {
+    fontSize: '1.5em',
+    fontWeight: 'bold',
+    paddingBottom: '20px',
+  },
 }))
 
 const ProductDetail = () => {
   const classes = useStyles();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const selector = useSelector(state => state);
   const path = selector.router.location.pathname;
   const id = path.split('/')[2];
@@ -43,16 +61,21 @@ const ProductDetail = () => {
   // console.log(product.data.title);
   // console.log(product.data.images[0].path)
   return (
-    <section className="c-section-wrapin">
-      {product && (
-        <div className="p-grid-row">
-          <h2 className={classes.detail}>{product.data.title}</h2>
-          {/* <p className={classes.detail}>{product.data.images[0].path}</p> */}
-          <p className={classes.detail}>{product.data.description}</p>
+    <>
+      <HeaderComponent />
+      <section className={classes.detail}>
+        {product && (
+          <div className="p-grid-row">
+            {/* <div className={classes.images}> */}
+              <img className={classes.images} src={product.data.images[0].path} alt="トップ画像"/>
+            {/* </div> */}
+            <h2 className={classes.title}>{product.data.title}</h2>
+            <p>{product.data.description}</p>
 
-        </div>
-      )}
-    </section>
+          </div>
+        )}
+      </section>
+    </>
   )
 }
 

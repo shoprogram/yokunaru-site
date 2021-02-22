@@ -46,18 +46,15 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
   titleStyle: {
-   fontWeight: 'bold',
-   fontSize: '1.3em',
-   cursor: "pointer",
+    fontWeight: 'bold',
+    fontSize: '1.3em',
+    cursor: "pointer",
     wordBreak: "break-all",
     overflow: "hidden",
     textOverflow: "ellipsis",
     display: "-webkit-box",
     lineHeight: "1.3em",
     maxHeight: "calc(1.3em*1)",
-  },
-  titeleSpace: {
-    padding: 0,
   },
   avatar: {
     backgroundColor: yellow[300],
@@ -100,7 +97,6 @@ const ProductCard = (props) => {
         onClick={() => dispatch(push('/product/'+props.id))}
       />
       <CardContent 
-        className={classes.titleSpace} 
         onClick={() => dispatch(push('/product/'+props.id))}           
       >
         <Typography 

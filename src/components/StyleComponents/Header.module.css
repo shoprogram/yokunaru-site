@@ -10,6 +10,7 @@
 }
 .logo { 
   width: 150px;
+  cursor: pointer;
 }
 .headerTopNav {
   display: flex;
