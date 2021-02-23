@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { push } from 'connected-react-router'
 import { FirebaseTimestamp, db } from '../../firebase'
 import { fetchProductsAction } from './actions'
@@ -19,7 +19,6 @@ export const fetchProducts = () => {
     })
   }
 }
-console.log(fetchProducts)
 
 export const saveProduct = (id, title, why, what, description, category, images) => {
   return async (dispatch) => {
@@ -49,4 +48,8 @@ export const saveProduct = (id, title, why, what, description, category, images)
         throw new Error(error)
       })
   }
+}
+
+export const searchProducts = () => {
+  
 }

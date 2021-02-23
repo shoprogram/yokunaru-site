@@ -13,3 +13,4 @@ export {default as ProductList} from './ProductList'
 export {default as Reset} from './Reset'
 // export {default as UserMyPage} from './UserMyPage'
 export {default as BeforeSignInHome} from './BeforeSignInHome'
+export {default as SearchProducts} from './SearchProducts';

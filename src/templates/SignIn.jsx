@@ -51,8 +51,6 @@ const SignIn = () => {
                 // classNmae={classes.submit}
                 onClick={signInGoogle}
                 // onClick={() => dispatch(push('/'))}
-                
-
             >
             SignIn with Google
             </Button>

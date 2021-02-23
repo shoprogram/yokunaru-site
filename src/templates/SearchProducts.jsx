@@ -1,0 +1,74 @@
+import React, { useState, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import { fetchProducts } from '../reducks/products/operations';
+import {getProducts} from "../reducks/products/selectors";
+import { TextField, ListItem, ListItemText } from "@material-ui/core/";
+
+const products = () => [
+  "apple",
+  "banana",
+  "orange",
+  "cheese cake",
+  "banana cake",
+  "apple juice",
+  "orange juice"
+];
+
+const ListItems = (props) => (
+  <ListItem alignItems="center" divider>
+    <ListItemText primary={props.text} />
+  </ListItem>
+);
+
+const SearchProducts = () => {
+  // const dispatch = useDispatch();
+  // const selector = useSelector((state) => state);
+  // const products = getProducts(selector);
+  
+  const [keyword, setKeyword] = useState("");
+  const [showLists, setShowLists] = useState(false);
+  const [filteredProducts, setfilteredProducts] = useState(products);
+  
+  // useEffect(() => {
+    //   dispatchEvent(fetchProducts)
+    // },[]);
+    
+    useEffect(() => {
+      if(keyword === "") {
+        setfilteredProducts(products);
+        return;
+      }
+      
+      const searchKeywords = keyword
+      .trim()
+      .toLowerCase()
+      .match(/[^\s]+/g);
+      
+      // if (searchKeywords === null) {
+      //   setFilteredProducts(products);
+      //   return;
+      // }
+      
+      const result = products.filter((product) => {
+        searchKeywords.every((kw) => product.toLowerCase().indexOf(kw) !== -1)
+      });
+      
+      setfilteredProducts(result.length ? result : ["No Item Found"]);
+    },[keyword]);
+  return (
+    <div>
+      <TextField
+        id="field"
+        color="secondary"
+        variant="outlined"
+        label="enter keywords"
+        onChange={(e) => setKeyword(e.target.value)}
+        onClick={() => setShowLists(true)}
+      />
+      {showLists &&
+        filteredProducts.map((v, i) => <ListItems key={i} text={v} />)}
+    </div>
+  )
+}
+
+export default SearchProducts

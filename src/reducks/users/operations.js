@@ -123,3 +123,33 @@ export const signOut = () => {
       })
   }
 }
+
+
+export const guestSignIn = () => {
+  const guestId = "guestsama@gmail.com" 
+  const guestPass= "password"
+
+  return async (dispatch) => {
+    auth.signInWithEmailAndPassword(guestId, guestPass)
+    .then(result => {
+      const user = result.user
+      
+      if(user) {
+        const uid = user.uid
+        
+        db.collection('users').doc(uid).get()
+        .then(snapshot => {
+          const data =  snapshot.data()
+          
+          dispatch(signInAction({
+            isSignedIn: true,
+            role: data.role,
+            uid: uid,
+            username: data.username
+          }))
+          dispatch(push('/'))
+        })
+      }
+    })
+  }
+}
