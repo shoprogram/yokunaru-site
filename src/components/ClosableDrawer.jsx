@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react'
+import React, {useState, useCallback, useEffect} from 'react'
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -16,6 +16,7 @@ import {TextInput} from  './UIkit/index';
 import { push } from 'connected-react-router';
 import {useDispatch} from 'react-redux';
 import { signOut } from '../reducks/users/operations';
+import { db } from '../firebase';
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -51,13 +52,31 @@ const ClosableDrawer = (props) => {
     props.onClose(event)
   }
 
+  const [filters, setFilters] = useState([
+    {fanc: selectMenu, label: "すべて", id: "all", value: "/" },
+    // {fanc: selectMenu, label: "すべて", id: "all", value: "/" },
+    // {fanc: selectMenu, label: "すべて", id: "all", value: "/" },
+  ])
+
   const menus = [
     {fanc: selectMenu, label: "トウコウ", icon: <AddCircleIcon />, id: "registar", value: "/product/edit" },
     // {fanc: selectMenu, labe: "リレキ", icon: <HistoryIcon /> id: "history", value: "/history"}
     {fanc: selectMenu, label: "プロフィール", icon: <PersonIcon />, id: "profile", value: "/user/mypage"}
-
-
   ];
+
+  useEffect(() => {
+    db.collection('categories')
+    .orderBy('order', 'asc')
+    .get()
+    .then(snapshots => {
+      const list = []
+      snapshots.forEach(snapshot => {
+        const category = snapshot.data()
+        list.push({fanc: selectMenu, label: category.name, id: category.id, value: `/?category=${category.id}`})
+      })
+      setFilters(prevState => [...prevState, ...list])
+    })
+  },[]);
 
   return (
     <div>
@@ -94,6 +113,14 @@ const ClosableDrawer = (props) => {
               </ListItemIcon>
               <ListItemText primary={"ログアウト"} />
             </ListItem>
+          </List>
+          <Divider />
+          <List>
+            {filters.map(filter => (
+              <ListItem button key={filter.id} onClick={(e) => filter.fanc(e, filter.value)}>
+                <ListItemText primary={filter.label} />
+              </ListItem>
+            ))}
           </List>
         </div>
       </Drawer>

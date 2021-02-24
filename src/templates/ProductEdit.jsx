@@ -17,7 +17,8 @@ const ProductEdit = () => {
         [why, setWhy] = useState(""),
         [what, setWhat] = useState(""),
         [description, setDescription] = useState(""),
-        [category, setCategory] = useState("");
+        [category, setCategory] = useState(""),
+        [categories, setCategories] = useState([]);
 
   const inputTitle = useCallback((event) => {
     setTitle(event.target.value)
@@ -36,13 +37,13 @@ const ProductEdit = () => {
   },[setDescription]);
 
 
-  const categories = [
-    {id: "info", name: "健康情報"},
-    {id: "reha", name: "リハビリ"},
-    {id: "after-reha", name: "術後リハビリ"},
-    {id: "sports", name: "スポーツ"},
-    {id: "other", name: "その他"},
-  ];
+  // const categories = [
+  //   {id: "info", name: "健康情報"},
+  //   {id: "reha", name: "リハビリ"},
+  //   {id: "after-reha", name: "術後リハビリ"},
+  //   {id: "sports", name: "スポーツ"},
+  //   {id: "other", name: "その他"},
+  // ];
 
   useEffect(() => {
     if(id !== ""){
@@ -58,6 +59,23 @@ const ProductEdit = () => {
       })
     }
   },[]);
+
+  useEffect(() => {
+    db.collection('categories')
+    .orderBy('order','asc')
+    .get()
+    .then(snapshots => {
+      const list = []
+      snapshots.forEach(snapshot => {
+        const data = snapshot.data()
+        list.push({
+          id: data.id,
+          name: data.name
+      })
+    })
+      setCategories(list)
+    })
+  });
 
   return (
     <section>
