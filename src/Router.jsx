@@ -14,11 +14,11 @@ const Router = () => {
         <Route exact path={"/before"} component={BeforeSignInHome} />
         <Route exact path={"/search"} component={SearchProducts} />
         <Auth>
-        <Route exact path={"/product/:id"} component={ProductDetail} />
+        <Route exact path={"/product/original/:id"} component={ProductDetail} />
           <Route exact path={"(/)?"} component={Home} />
           {/* <Route exact path={"/signout"} component={signOut} /> */}
-          <Route path={"/product/edit(/:id)?"} component={ProductEdit} />
-          {/* <Route exact path={"/product/edit"} component={ProductEdit} /> */}
+          {/* <Route path={"/product/edit(/:id)?"} component={ProductEdit} /> */}
+          <Route exact path={"/product/edit"} component={ProductEdit} />
         </Auth>
       </Switch>
   )

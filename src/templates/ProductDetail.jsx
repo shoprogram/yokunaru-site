@@ -3,7 +3,7 @@ import { db } from '../firebase';
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from '@material-ui/core';
 import HeaderComponent from '../components/HeaderComponent';
-import { BorderLeftTwoTone } from '@material-ui/icons';
+// import { BorderLeftTwoTone } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   detail: {
@@ -42,13 +42,9 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const selector = useSelector(state => state);
   const path = selector.router.location.pathname;
-  const id = path.split('/')[2];
-  // console.log(path.split('/'));
-  // console.log(path);
-  // console.log(id);
+  const id = path.split('/')[3];
 
   const [product, setProduct] = useState(null);
-
 
   useEffect(() => {
     db.collection('products').doc(id).get().then(doc => {
@@ -57,9 +53,6 @@ const ProductDetail = () => {
       })
   },[]);
   
-  console.log(product);
-  // console.log(product.data.title);
-  // console.log(product.data.images[0].path)
   return (
     <>
       <HeaderComponent />
