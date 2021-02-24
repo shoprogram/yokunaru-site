@@ -1,21 +1,25 @@
 .navContainer {
-  width: 160px;
+  width: 150px;
   height: 100%;
-  padding-right: 8px;
+  padding-right: 15px;
+  border-right:  0.1px solid rgb(172, 172, 168, 0.5);
 }
-.navContainer h3 {
+.navTitle {
   margin-bottom: 8px;
   padding-left: 3px;
   font-weight: bold;
+  color: rgba(31, 31, 2, 0.5);
 }
 .navContainer a {
   text-decoration: none;
   padding: 8px 8px; 
   margin: 8px 0;
   border-radius: 5px;
+  color: rgba(75, 75, 75, 0.5);
 }
 a:hover{
   background-color: rgb(245, 238, 159);
+  color: rgba(0, 0, 0, 0.5);
 }
 .topNavContaints {
   display: flex;
@@ -31,6 +35,27 @@ a:hover{
   display: flex;
   flex-direction: column;
   justify-content: left;
+}
+
+.navSignIn {
+  cursor: pointer;
+}
+
+/* Paragraph */
+.news::after {
+  content: "サイシン";
+}
+.trend::after {
+  content: "トレンド";
+}
+.timeLine::after {
+  content: "オススメ";
+}
+.post::after {
+  content: "トウコウ";
+}
+.anser::after {
+  content: "カイトウ";
 }
 
 /* アイコン */
@@ -63,4 +88,30 @@ a:hover{
   font-family: "Font Awesome 5 Free";
   content: '\f059';
   font-weight: 800;
+}
+
+
+/* responsive */
+@media screen and (max-width:576px) {
+  .navTitle {
+    display: none;
+  }
+  .navContainer{
+    width: auto;
+  }
+  .news::after{
+    display: none;
+  }
+  .trend::after {
+    display: none;
+  }
+  .timeLine::after {
+    display: none;
+  }
+  .post::after {
+    display: none;
+  }
+  .anser::after {
+    display: none;
+  }
 }

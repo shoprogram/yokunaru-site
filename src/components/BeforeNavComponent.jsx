@@ -10,14 +10,14 @@ const BeforeNavComponent = () => {
     <div>
       <article className={ Styles.navContainer}>
         <section className={ Styles.topNavContaints}>
-          <h3>ヨクナル</h3>
-          <a href="#" className={ Styles.news }>サイシン</a>
-          <a href="#" className={ Styles.trend }>トレンド</a>
-          <a href="#" className={ Styles.timeLine }>タイムライン</a>
+          <h3 className={ Styles.navTitle }>ヨクナル</h3>
+          <a href="#" className={ Styles.news }></a>
+          <a href="#" className={ Styles.trend }></a>
+          <a href="#" className={ Styles.timeLine }></a>
         </section>
         <section className={ Styles.bottomNavContaints}>
-          <h3>ヨクスル</h3>
-          <a onClick={() => dispatch(push('/signin'))}>
+          <h3 className={ Styles.navTitle }>ヨクスル</h3>
+          <a className={ Styles.navSignIn } onClick={() => dispatch(push('/signin'))}>
             ログインするとヨクスル(投稿する)ことができます！
           </a>
         </section>

@@ -10,18 +10,18 @@ const NavComponent = () => {
     <div>
       <article className={ Styles.navContainer}>
         <section className={ Styles.topNavContaints}>
-          <h3>ヨクナル</h3>
-          <a href="#" className={ Styles.news }>サイシン</a>
-          <a href="#" className={ Styles.trend }>トレンド</a>
-          <a href="#" className={ Styles.timeLine }>タイムライン</a>
+          <h3 className={ Styles.navTitle }>ヨクナル</h3>
+          <a href="#" className={ Styles.news }></a>
+          <a href="#" className={ Styles.trend }></a>
+          <a href="#" className={ Styles.timeLine }></a>
         </section>
         <section className={ Styles.bottomNavContaints}>
-          <h3>ヨクスル</h3>
+          <h3 className={ Styles.navTitle }>ヨクスル</h3>
           <a href="#" 
           className={ Styles.post }
           onClick={() => dispatch(push('/product/edit'))}
-          >トウコウ</a>
-          <a href="#" className={ Styles.anser }>カイトウ</a>
+          ></a>
+          <a href="#" className={ Styles.anser }></a>
         </section>
       </article>
     </div>

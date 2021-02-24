@@ -1,6 +1,7 @@
 import {signInAction, signOutAction} from "./actions";
 import {push} from 'connected-react-router';
 import {auth, db, FirebaseTimestamp} from '../../firebase';
+import { NaturePeople } from "@material-ui/icons";
 
 export const listenAuthState = () => {
   return async (dispatch) => {
@@ -113,13 +114,14 @@ export const signUp = (username, email, password, confirmPassword) => {
     })
   }
 }
+console.log(signUp);
 
 export const signOut = () => {
   return async (dispatch) => {
     auth.signOut()
       .then(() => {
         dispatch(signOutAction());
-        dispatch(push('/'));
+        dispatch(push('/before'));
       })
   }
 }

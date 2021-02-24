@@ -44,3 +44,22 @@
 .signIn:hover {
   background-color: rgb(185, 178, 78);
 }
+
+.guest {
+  align-items: center;
+  text-align: center;
+  padding: 8px 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: rgb(117, 116, 48);
+  background-color: rgb(235, 225, 85);
+  border-radius: 0.5em;
+  font-size: 13px;
+}
+.guest::after {
+  display: flex;
+  content: "(企業様はこちらから)";
+}
+.guest:hover {
+  background-color: rgb(185, 178, 78);
+}
