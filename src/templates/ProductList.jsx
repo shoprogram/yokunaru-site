@@ -9,6 +9,8 @@ const ProductList = () => {
   const selector = useSelector((state) => state);
   const products = getProducts(selector);
 
+  const query = selector.router.location.search;
+
   useEffect(() => {
     dispatch(fetchProducts())
   },[]);
