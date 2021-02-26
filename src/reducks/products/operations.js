@@ -6,9 +6,11 @@ import { fetchProductsAction } from './actions'
 const productsRef = db.collection('products')
 //firestore(db)のusesではなくproductsからデータをとってくる
 
-export const fetchProducts = () => {
+export const fetchProducts = (category) => {
   return async (dispatch) => {
-    productsRef.orderBy('updated_at', 'desc').get()
+    let query = productsRef.orderBy('updated_at', 'desc');
+    query = (category !== "") ? query.where('category', '==', category) : query;
+    query.get()
     .then(snapshots => {
       const productList =[]
       snapshots.forEach(snapshot => {

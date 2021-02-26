@@ -10,10 +10,11 @@ const ProductList = () => {
   const products = getProducts(selector);
 
   const query = selector.router.location.search;
+  const category = /^\?category=/.test(query) ? query.split('?category=')[1] : "";
 
   useEffect(() => {
-    dispatch(fetchProducts())
-  },[]);
+    dispatch(fetchProducts(category))
+  },[query]);
 
   return (
      <section className="c-section-wrapin">

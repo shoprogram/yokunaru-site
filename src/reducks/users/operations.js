@@ -114,7 +114,6 @@ export const signUp = (username, email, password, confirmPassword) => {
     })
   }
 }
-console.log(signUp);
 
 export const signOut = () => {
   return async (dispatch) => {
