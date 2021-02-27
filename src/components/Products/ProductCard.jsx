@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     [theme.breakpoints.down('sm')]: {
       margin: 8,
-      width: 'calc(50% - 16px)'
+      width: 'calc(100% - 16px)',
+      maxHeight: 'auto'
     },
     [theme.breakpoints.up('sm')]: {
       margin: 16,
