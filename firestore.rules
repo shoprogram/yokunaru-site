@@ -15,7 +15,7 @@ service cloud.firestore {
 
    match /categories/{categoryid} {
      allow read: if true;
-     allow write: if request.auth.uid != null;
+     allow write: if true;
    }
   }
 }

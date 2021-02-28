@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ClosableDrawer = (props) => {
+const BeforeClosableDrawer = (props) => {
   const classes = useStyles();
   const {container} = props;
   const dispatch = useDispatch();
@@ -58,11 +58,6 @@ const ClosableDrawer = (props) => {
     // {fanc: selectMenu, label: "すべて", id: "all", value: "/" },
   ])
 
-  const menus = [
-    {fanc: selectMenu, label: "トウコウ", icon: <AddCircleIcon />, id: "registar", value: "/product/edit" },
-    // {fanc: selectMenu, labe: "リレキ", icon: <HistoryIcon /> id: "history", value: "/history"}
-    {fanc: selectMenu, label: "プロフィール", icon: <PersonIcon />, id: "profile", value: "/user/mypage"}
-  ];
 
   useEffect(() => {
     db.collection('categories')
@@ -99,20 +94,12 @@ const ClosableDrawer = (props) => {
           </div>
           <Divider />
           <List>
-            {menus.map(menu => (
-              <ListItem button key={menu.id} onClick={(e) => menu.fanc(e, menu.value)}>
-                <ListItemIcon>
-                  {menu.icon}
-                </ListItemIcon>
-                <ListItemText primary={menu.label} />
-              </ListItem>
-            ))}
             
-            <ListItem button key="logout" onClick={() => dispatch(signOut())}>
+            <ListItem button key="logout" onClick={() => dispatch(push('/signin'))}>
               <ListItemIcon>
                 <ExitToAppIcon />
               </ListItemIcon>
-              <ListItemText primary={"ログアウト"} />
+              <ListItemText primary={"ログイン"} />
             </ListItem>
           </List>
           <Divider />
@@ -129,4 +116,4 @@ const ClosableDrawer = (props) => {
   )
 }
 
-export default ClosableDrawer
+export default BeforeClosableDrawer

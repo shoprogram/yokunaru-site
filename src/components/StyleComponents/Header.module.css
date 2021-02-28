@@ -20,19 +20,20 @@
 }
 .headerTopNav a{
   cursor: pointer;
+  margin-right: 35px;
 }
-.logIn{
+.signIn{
   font-weight: bold;
   align-items: center;
   color: rgba(97, 89, 89, 0.89);
   padding: 8px;
   text-decoration: none;
 }
-.logIn:hover {
+.signIn:hover {
   color:black;
   border-radius: 5px;
 }
-.signIn {
+.signUp {
   align-items: center;
   padding: 8px 20px;
   font-weight: bold;
@@ -41,7 +42,7 @@
   background-color: rgb(235, 225, 85);
   border-radius: 0.5em;
 }
-.signIn:hover {
+.signUp:hover {
   background-color: rgb(185, 178, 78);
 }
 
@@ -49,17 +50,28 @@
   align-items: center;
   text-align: center;
   padding: 8px 20px;
+  /* margin:; */
   font-weight: bold;
   text-decoration: none;
   color: rgb(117, 116, 48);
   background-color: rgb(235, 225, 85);
   border-radius: 0.5em;
-  font-size: 13px;
+  /* font-size: 13px; */
 }
-.guest::after {
+/* .guest::after {
   display: flex;
   content: "(企業様はこちらから)";
-}
+} */
 .guest:hover {
   background-color: rgb(185, 178, 78);
+}
+
+/* responsive */
+@media screen and (max-width:576px) {
+.signIn {
+  display: none;
+}
+.signUp {
+  display: none;
+}
 }

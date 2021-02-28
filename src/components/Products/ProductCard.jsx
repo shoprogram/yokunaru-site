@@ -27,6 +27,11 @@ const useStyles = makeStyles((theme) => ({
       maxHeight: 'auto'
     },
     [theme.breakpoints.up('sm')]: {
+      margin: 8,
+      width: 'calc(50% - 16px)',
+      maxHeight: 'auto'
+    },
+    [theme.breakpoints.up('lg')]: {
       margin: 16,
       width: 'calc(25% - 32px)'
     }
