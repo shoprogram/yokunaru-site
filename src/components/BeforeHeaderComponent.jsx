@@ -33,7 +33,7 @@ const BeforeHeaderComponent = () => {
       <div className={ Styles.headerTop }>
         <img src={ Logo } alt="logo" className={ Styles.logo }/>
         <div className={ Styles.headerTopNav}>
-          <a className={Styles.guest} onClick={() => dispatch(guestSignIn())}>ゲストログイン</a>
+          <a className={Styles.guest} onClick={() => dispatch(guestSignIn())}>ゲストログイン(企業様はこちらから)</a>
           <a className={ Styles.signIn} onClick={() => dispatch(push("signin"))}>ログイン</a>
           <a className={ Styles.signUp} onClick={() => dispatch(push("signup"))}>新規登録</a>
           <MenuRoundedIcon className={classes.menuIcon} handleDrawerToggle={handleDrawerToggle} onClick={(event) => handleDrawerToggle(event)}/>

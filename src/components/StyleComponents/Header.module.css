@@ -56,12 +56,12 @@
   color: rgb(117, 116, 48);
   background-color: rgb(235, 225, 85);
   border-radius: 0.5em;
-  /* font-size: 13px; */
+  font-size: 13px;
 }
-/* .guest::after {
-  display: flex;
-  content: "(企業様はこちらから)";
-} */
+.guest::after {
+  /* display: flex;
+  content: "(企業様はこちらから)"; */
+}
 .guest:hover {
   background-color: rgb(185, 178, 78);
 }

@@ -73,7 +73,7 @@ const ProductEdit = () => {
           name: data.name
       })
     })
-      setCategories(list)
+      setCategories(list);
     })
   });
 
