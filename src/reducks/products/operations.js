@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { push } from 'connected-react-router'
-import { FirebaseTimestamp, db } from '../../firebase'
+import { FirebaseTimestamp, db, auth } from '../../firebase'
 import { fetchProductsAction } from './actions'
 
 const productsRef = db.collection('products')
@@ -25,16 +25,16 @@ export const fetchProducts = (category) => {
 export const saveProduct = (id, title, why, what, description, category, images) => {
   return async (dispatch) => {
     const timestamp = FirebaseTimestamp.now()
-
-    const data = {
-      category: category,
-      description: description,
-      title: title,
-      images: images,
-      why: why,
-      what: what,
-      updated_at: timestamp
-    }
+      const data = {
+        category: category,
+        description: description,
+        title: title,
+        images: images,
+        why: why,
+        what: what,
+        updated_at: timestamp,
+        // username: uid,
+      }
 
     if (id ==="") {
       const ref = productsRef.doc();

@@ -3,8 +3,15 @@ import {PrimaryButton, TextInput, SelectBox} from "../components/UIkit";
 import { useDispatch } from "react-redux";
 import {saveProduct} from "../reducks/products/operations";
 import ImageArea from '../components/Products/ImageArea';
-import { db } from '../firebase';
+import { auth, db } from '../firebase';
 
+// let uid ="";
+
+//   auth.onAuthStateChanged (user => {
+//      let uid = user.uid
+//      console.log(uid);
+//   });
+// console.log(uid);
 const ProductEdit = () => {
   const dispatch = useDispatch();
   let id = window.location.pathname.split('/product/edit')[1];
@@ -44,7 +51,15 @@ const ProductEdit = () => {
   //   {id: "sports", name: "スポーツ"},
   //   {id: "other", name: "その他"},
   // ];
+  
 
+//   const [userId, setUserId] = useState("");
+//   useEffect(() => {
+//   const userSub = db
+//   .collection('users')
+//   .doc(uid)
+  
+// })
   useEffect(() => {
     if(id !== ""){
       db.collection('products').doc(id).get()
@@ -104,10 +119,10 @@ const ProductEdit = () => {
                 <div className="module-spacer--small"/>
                 <div className="module-spacer--small" />
                 <div className="center">
-                    <PrimaryButton
-                        label={"内容を投稿"}
-                        onClick={() => dispatch(saveProduct(id, title, why, what, description, category, images))}
-                    />
+                  <PrimaryButton
+                  label={"内容を投稿"}
+                  onClick={() => dispatch(saveProduct(id, title, why, what, description, category, images))}
+                  />
                 </div>
             </div>
     </section>

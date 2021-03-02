@@ -53,28 +53,28 @@ const Comment = (props) => {
                         label={"内容を投稿"}
                         onClick={() => dispatch(saveComment(commentId, comment))}
                     /> */}
-                    <form onSubmit={newComment}>
-              <div>
-                <input
-                
-                  type="text"
-                  placeholder="Type new comment..."
-                  value={comment}
-                  onChange={(e) =>
-                    setComment(e.target.value)
-                  }
-                />
-                <button
-                  disabled={!comment}
-                 
-                  type="submit"
-                >
-                  <SendIcon />
-                </button>
-              </div>
-            </form>
+             <form onSubmit={newComment}>
+                <div>
+                  <input
+                  
+                    type="text"
+                    placeholder="Type new comment..."
+                    value={comment}
+                    onChange={(e) =>
+                      setComment(e.target.value)
+                    }
+                  />
+                  <button
+                    disabled={!comment}
+                  
+                    type="submit"
+                  >
+                    <SendIcon />
+                  </button>
                 </div>
+              </form>
             </div>
+          </div>
     </section>
   )
 }
