@@ -5,6 +5,7 @@ import {signIn} from "../reducks/users/operations";
 import {push} from "connected-react-router"
 import { auth, provider } from '../firebase';
 import { Button } from '@material-ui/core';
+import GoogleLogo from '../assets/img/icons/googleLogo.png'
 
 const SignIn = () => {
     const dispatch = useDispatch();
@@ -43,18 +44,20 @@ const SignIn = () => {
             <div className="center">
                 <PrimaryButton label={"ログイン"} onClick={() => dispatch(signIn(email, password))} />
                 <div className="module-spacer--small" />
-                <p className="" onClick={() => dispatch(push('/signin/reset'))}>パスワードを忘れた方はこちら</p>
-                <p className="u-text-small" onClick={() => dispatch(push('/signup'))}>アカウント登録がまだのかたはこちら</p>
-            </div>
             <Button
-                fullWidth
                 variant="contained"
                 // classNmae={classes.submit}
                 onClick={signInGoogle}
                 // onClick={() => dispatch(push('/'))}
             >
-            SignIn with Google
+                <img src={GoogleLogo} alt="" className="google-logo"/>
+                oogle
             </Button>
+
+            <div className="module-spacer--small" />
+                <p className="" onClick={() => dispatch(push('/signin/reset'))}>パスワードを忘れた方はこちら</p>
+                <p className="u-text-small" onClick={() => dispatch(push('/signup'))}>アカウント登録がまだのかたはこちら</p>
+            </div>
         </div>
     );
 };
