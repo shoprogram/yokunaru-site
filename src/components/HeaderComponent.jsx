@@ -7,6 +7,7 @@ import { signOut } from '../reducks/users/operations';
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
 import { makeStyles } from '@material-ui/styles';
 import {ClosableDrawer} from './index';
+import mainImg from './img/yokunaruMain.png'
 
 
 const useStyles = makeStyles ((theme) => ({
@@ -14,7 +15,10 @@ const useStyles = makeStyles ((theme) => ({
     fontSize: "35px",
     cursor: "pointer",
     marginLeft: "30px",
-  }
+  },
+  mainImg: {
+    width: "100%",
+  },
 }))
 
 const HeaderComponent = () => {
@@ -41,6 +45,7 @@ const HeaderComponent = () => {
         </div>
       </div>
       <ClosableDrawer open={open} onClose={handleDrawerToggle}/>
+      <img src={mainImg} alt="" className={classes.mainImg}/>
     </div>
   )
 }

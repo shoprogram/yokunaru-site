@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up('lg')]: {
       margin: 16,
-      width: 'calc(25% - 32px)'
+      width: 'calc(25% - 32px)',
+      maxHeight: '360px'
     }
   },
   media: {
