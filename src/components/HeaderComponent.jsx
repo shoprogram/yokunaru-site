@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react'
-import Logo from './img/logo.png';
+import Logo from './img/onlyLogo.png';
 import {useDispatch} from 'react-redux';
 import {push} from 'connected-react-router';
 import Styles from './StyleComponents/Header.module.css';
@@ -36,16 +36,18 @@ const HeaderComponent = () => {
 
   return (
     <div className={ Styles.headerStyle } >
-      <div className={ Styles.headerTop }>
-        <img src={ Logo } alt="logo" className={ Styles.logo } onClick={() => dispatch(push("/"))}/>
-        <div className={ Styles.headerTopNav}>
-          <a className={ Styles.signIn} onClick={() => dispatch(signOut())}>ログアウト</a>
-          <a className={ Styles.signUp} onClick={() => dispatch(push("/signup"))}>新規登録</a>
-          <MenuRoundedIcon className={classes.menuIcon} handleDrawerToggle={handleDrawerToggle} onClick={(event) => handleDrawerToggle(event)}/>
+      <div className={ Styles.headerContainer}>
+        <div className={ Styles.headerTop }>
+          <img src={ Logo } alt="logo" className={ Styles.logo } onClick={() => dispatch(push("/"))}/>
+          <div className={ Styles.headerTopNav}>
+            <a className={ Styles.signIn} onClick={() => dispatch(signOut())}>ログアウト</a>
+            <a className={ Styles.signUp} onClick={() => dispatch(push("/signup"))}>新規登録</a>
+            <MenuRoundedIcon className={classes.menuIcon} handleDrawerToggle={handleDrawerToggle} onClick={(event) => handleDrawerToggle(event)}/>
+          </div>
         </div>
+        <ClosableDrawer open={open} onClose={handleDrawerToggle}/>
       </div>
-      <ClosableDrawer open={open} onClose={handleDrawerToggle}/>
-      <img src={mainImg} alt="" className={classes.mainImg}/>
+        <img src={mainImg} alt="" className={classes.mainImg}/>
     </div>
   )
 }
