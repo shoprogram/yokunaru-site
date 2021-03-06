@@ -6,6 +6,7 @@ const MainComponent = () => {
     <div className={ Styles.mainContainer }>
       {/* Swiper */}
       <h1 className={Styles.title}>サイシンキジ</h1>
+      <p className={Styles.titleText}>気になる記事をクリック！</p>
       <ProductList />
     </div>
   )
