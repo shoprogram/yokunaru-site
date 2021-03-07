@@ -52,6 +52,23 @@ export const saveProduct = (id, title, why, what, description, category, images)
   }
 }
 
+// export const likeButton =  () => {
+//   const[ like, setLike] = useState({count: 0, liked: false});
+
+//   const clickLike = () => {
+//     setLike({
+      // count: like.count + (like.liked ? -1 : 1),
+//       liked: !like.liked
+//     });
+//   }
+
+//   return (
+//     <>
+//     button on
+//     </>
+//   )
+// }
+
 // export const saveComment = (commentId, comment) =>{
 //   console.log(commentId);
 //   return async (dispatch) => {
@@ -71,6 +88,9 @@ export const saveProduct = (id, title, why, what, description, category, images)
 //   }
 // }
 
-export const searchProducts = () => {
+
+// export const searchProducts = () => {
   
-}
+// }
+
+

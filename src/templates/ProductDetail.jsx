@@ -8,6 +8,9 @@ import { push } from 'connected-react-router';
 import Styles from './tempStyles/ProductDetail.module.css';
 import { getProducts } from '../reducks/products/selectors';
 import { DockOutlined } from '@material-ui/icons';
+import IconButton from '@material-ui/core/IconButton';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+
 // import { BorderLeftTwoTone } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
@@ -65,6 +68,19 @@ const useStyles = makeStyles((theme) => ({
   commentButtonDisable: {
     display: "none",
   },
+  likeArea: {
+    position: "relative",
+    right: "30%",
+    top: "30%",
+    // zIndex: "5",
+    // float: "left",
+    // marginLeft: "18%",
+    // marginBottom: "10%",
+  },
+  likeButton: {
+    fontWeight: "800",
+    fontSize: "80px",
+  },
 }))
 
 const ProductDetail = (props) => {
@@ -101,7 +117,6 @@ const ProductDetail = (props) => {
       timestamp: null,
     },
   ]);
-  
 
   useEffect(() => {
     const unSub = db
@@ -133,6 +148,46 @@ const ProductDetail = (props) => {
     });
     setComment("");
   };
+
+  const [like, setLike] = useState([
+    {
+      likeCount: 0,
+      liked:false,
+    }
+  ]);
+  const [likes, setLikes] = useState([
+    {
+      likeCount: 0,
+    }
+  ]);
+
+  useEffect(() => {
+    const selectLikes = db
+    .collection("products")
+    .doc(id)
+    .collection("likes")
+    .onSnapshot((snapshot) => {
+      setLikes(
+        snapshot.docs.map((doc) => ({
+          likeCount: like.likeCount,
+        }))
+      );
+    });
+    return () => {
+      selectLikes();
+    };
+  },[id]);
+
+  const likeClick = (e) => {
+    e.preventDefault();
+    db.collection('products').doc(id).collection(likes).add({
+      likeCount: like.likeCount
+    });
+    setLike({
+      likeCount: like.likeCount + (like.liked ? -1 : 1),
+      liked: !like.liked
+    });
+  }
 
   return (
     <>
@@ -177,6 +232,11 @@ const ProductDetail = (props) => {
             </button>
           </div>
         </form>
+        <div>
+          <IconButton className={classes.likeArea}>
+            <FavoriteIcon className={classes.likeButton}/>
+          </IconButton>
+        </div>
       </section>
       {/* <button
       onClick={() => dispatch(push("/product/comment/"+id))}

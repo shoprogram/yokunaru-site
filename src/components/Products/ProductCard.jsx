@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -18,6 +18,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import NoImage from '../../assets/img/src/no_image.png';
 import {push} from 'connected-react-router';
 import {useDispatch} from 'react-redux';
+import { db } from '../../firebase';
+import { DockOutlined } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -83,18 +85,67 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: "calc(18px*3)",
     cursor: "pointer",
   },
+  checkout: {
+    color: "red",
+  },
+  snsContainer: {
+ 
+  },
 }));
 
 const ProductCard = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-
   const [expanded, setExpanded] = React.useState(false);
   const images = (props.images.length > 0) ? props.images : [NoImage];
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+
+
+  // const [like, setLike] = useState([
+  //   {
+  //     likeCount: 0,
+  //     liked:false,
+  //   }
+  // ]);
+  // const [likes, setLikes] = useState([
+  //   {
+  //     likeCount: 0,
+  //   }
+  // ]);
+
+  // const id = props.id
+  // console.log(id);
+  // useEffect(() => {
+  //   const selectLikes = db
+  //   .collection("products")
+  //   .doc(id)
+  //   .collection("likes")
+  //   .onsnapshot((snapshot) => {
+  //     setLikes(
+  //       snapshot.docs.map((doc) => ({
+  //         likeCount: like.likeCount,
+  //       }))
+  //     );
+  //   });
+  //   return () => {
+  //     selectLikes();
+  //   };
+  // },[id]);
+
+  // const likeClick = (e) => {
+  //   e.preventDefault();
+  //   db.collection('products').doc(id).collection(likes).add({
+  //     likeCount: like.likeCount
+  //   });
+  //   setLike({
+  //     likeCount: like.likeCount + (like.liked ? -1 : 1),
+  //     liked: !like.liked
+  //   });
+  // }
 
   return (
     <Card className={classes.root}>
@@ -114,20 +165,24 @@ const ProductCard = (props) => {
         </Typography>
         <Typography 
         className={classes.descriptionSpace}
-        onClick={() => dispatch(push('/product/'+props.id))} 
+        onClick={() => dispatch(push('/product/origional/'+props.id))} 
         >
           {props.description}
         </Typography>
       </CardContent>
-      <div className={classes.flex}>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+      {/* <div className={classes.flex}> */}
+      {/* <CardActions disableSpacing className={classes.snsContainer}>
+        <IconButton aria-label="add to favorites" onClick={likeClick} className={ like.likeCount ? classes.checkout : ""}>
+          {like.liked ? classes.check : ''}
           <FavoriteIcon />
         </IconButton>
+          {likes.map((com) => (
+            <div>{com.likeCount}</div>
+          ))}
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
-      </CardActions>
+      </CardActions> */}
       {/* <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
@@ -148,7 +203,7 @@ const ProductCard = (props) => {
         </IconButton>
         <FavoriteIcon />
       </CardActions> */}
-      </div>
+      {/* </div> */}
     </Card>
   );
 }
