@@ -136,11 +136,7 @@ const ProductCard = (props) => {
   //   };
   // },[id]);
 
-  // const likeClick = (e) => {
-  //   e.preventDefault();
-  //   db.collection('products').doc(id).collection(likes).add({
-  //     likeCount: like.likeCount
-  //   });
+  // const likeClick = () => {
   //   setLike({
   //     likeCount: like.likeCount + (like.liked ? -1 : 1),
   //     liked: !like.liked
@@ -172,7 +168,7 @@ const ProductCard = (props) => {
       </CardContent>
       {/* <div className={classes.flex}> */}
       {/* <CardActions disableSpacing className={classes.snsContainer}>
-        <IconButton aria-label="add to favorites" onClick={likeClick} className={ like.likeCount ? classes.checkout : ""}>
+        <IconButton aria-label="add to favorites" onClick={likeClick} className={ like.liked ? classes.checkout : ""}>
           {like.liked ? classes.check : ''}
           <FavoriteIcon />
         </IconButton>

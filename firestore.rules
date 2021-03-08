@@ -16,7 +16,7 @@ service cloud.firestore {
      allow read: if true;
      allow write: if request.auth.uid != null;
    }
-   match /products/{productId}/likes {
+   match /products/{productId}/likes/{likseId} {
      allow read: if true;
      allow write: if request.auth.uid != null;
    }

@@ -76,7 +76,7 @@ export const signIn = (email, password) => {
   }
 }
 
-export const signUp = (username, email, password, confirmPassword) => {
+export const signUp = async (username, email, password, confirmPassword) => {
   return async (dispatch) => {
     // Validation
     if (username === "" || email === "" || password === "" || confirmPassword === "") {
@@ -153,3 +153,7 @@ export const guestSignIn = () => {
     })
   }
 }
+
+// export const saveProfile = () => {
+
+// }

@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react'
-import { db, FirebaseTimestamp } from '../firebase';
+import { auth, db, FirebaseTimestamp } from '../firebase';
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from '@material-ui/core';
 import HeaderComponent from '../components/HeaderComponent';
@@ -81,6 +81,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "800",
     fontSize: "80px",
   },
+  checkout: {
+    color: "red",
+  },
 }))
 
 const ProductDetail = (props) => {
@@ -89,7 +92,14 @@ const ProductDetail = (props) => {
   const selector = useSelector(state => state);
   const path = selector.router.location.pathname;
   const id = path.split('/')[3];
-  
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    return auth.onAuthStateChanged(user => {
+      setUser(user);
+    });
+  },[]);
   // const products = getProducts(selector);
   
   const [product, setProduct] = useState(null);
@@ -143,6 +153,7 @@ const ProductDetail = (props) => {
   const newComment = (e) => {
     e.preventDefault();
     db.collection('products').doc(id).collection("comments").add({
+      uid: user.uid,
       text: comment,
       timestamp: FirebaseTimestamp.now(),      
     });
@@ -169,7 +180,7 @@ const ProductDetail = (props) => {
     .onSnapshot((snapshot) => {
       setLikes(
         snapshot.docs.map((doc) => ({
-          likeCount: like.likeCount,
+          likeCount: doc.data().likeCount,
         }))
       );
     });
@@ -178,14 +189,15 @@ const ProductDetail = (props) => {
     };
   },[id]);
 
-  const likeClick = (e) => {
-    e.preventDefault();
-    db.collection('products').doc(id).collection(likes).add({
-      likeCount: like.likeCount
-    });
+  const likeClick = () => {
     setLike({
       likeCount: like.likeCount + (like.liked ? -1 : 1),
       liked: !like.liked
+    });
+    db.collection('products').doc(id).collection("likes").add({
+      uid: user.uid,
+      likeCount: like.likeCount,
+      timestamp: FirebaseTimestamp.now(),      
     });
   }
 
@@ -232,8 +244,12 @@ const ProductDetail = (props) => {
             </button>
           </div>
         </form>
-        <div>
-          <IconButton className={classes.likeArea}>
+        <div className={classes.likeArea}>
+            いいね！
+          <IconButton className={ like.liked ? classes.checkout : ""} onClick={likeClick}>
+          {likes.map((com) => (
+            <div>{com.likeCount}</div>
+          ))}
             <FavoriteIcon className={classes.likeButton}/>
           </IconButton>
         </div>
