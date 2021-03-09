@@ -160,46 +160,48 @@ const ProductDetail = (props) => {
     setComment("");
   };
 
-  const [like, setLike] = useState([
-    {
-      likeCount: 0,
-      liked:false,
-    }
-  ]);
-  const [likes, setLikes] = useState([
-    {
-      likeCount: 0,
-    }
-  ]);
 
-  useEffect(() => {
-    const selectLikes = db
-    .collection("products")
-    .doc(id)
-    .collection("likes")
-    .onSnapshot((snapshot) => {
-      setLikes(
-        snapshot.docs.map((doc) => ({
-          likeCount: doc.data().likeCount,
-        }))
-      );
-    });
-    return () => {
-      selectLikes();
-    };
-  },[id]);
+//like処理
+  // const [like, setLike] = useState([
+  //   {
+  //     likeCount: 0,
+  //     liked:false,
+  //   }
+  // ]);
+  // const [likes, setLikes] = useState([
+  //   {
+  //     likeCount: 0,
+  //   }
+  // ]);
 
-  const likeClick = () => {
-    setLike({
-      likeCount: like.likeCount + (like.liked ? -1 : 1),
-      liked: !like.liked
-    });
-    db.collection('products').doc(id).collection("likes").add({
-      uid: user.uid,
-      likeCount: like.likeCount,
-      timestamp: FirebaseTimestamp.now(),      
-    });
-  }
+  // useEffect(() => {
+  //   const selectLikes = db
+  //   .collection("products")
+  //   .doc(id)
+  //   .collection("likes")
+  //   .onSnapshot((snapshot) => {
+  //     setLikes(
+  //       snapshot.docs.map((doc) => ({
+  //         likeCount: doc.data().likeCount,
+  //       }))
+  //     );
+  //   });
+  //   return () => {
+  //     selectLikes();
+  //   };
+  // },[id]);
+
+  // const likeClick = () => {
+  //   setLike({
+  //     likeCount: like.likeCount + (like.liked ? -1 : 1),
+  //     liked: !like.liked
+  //   });
+  //   db.collection('products').doc(id).collection("likes").add({
+  //     uid: user.uid,
+  //     likeCount: like.likeCount,
+  //     timestamp: FirebaseTimestamp.now(),      
+  //   });
+  // }
 
   return (
     <>
@@ -244,7 +246,7 @@ const ProductDetail = (props) => {
             </button>
           </div>
         </form>
-        <div className={classes.likeArea}>
+        {/* <div className={classes.likeArea}>
             いいね！
           <IconButton className={ like.liked ? classes.checkout : ""} onClick={likeClick}>
           {likes.map((com) => (
@@ -252,7 +254,7 @@ const ProductDetail = (props) => {
           ))}
             <FavoriteIcon className={classes.likeButton}/>
           </IconButton>
-        </div>
+        </div> */}
       </section>
       {/* <button
       onClick={() => dispatch(push("/product/comment/"+id))}

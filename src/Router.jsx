@@ -2,7 +2,7 @@ import React from 'react'
 import {Route, Switch} from 'react-router';
 import Auth from './Auth';
 import { signOut } from './reducks/users/operations';
-import {BeforeSignInHome, Home, SignUp, SignIn, Reset, ProductEdit, ProductList, ProductDetail, SearchProducts, Comment} from './templates';
+import {BeforeSignInHome, Home, SignUp, SignIn, Reset, ProductEdit, ProductList, ProductDetail, SearchProducts, Comment, Description} from './templates';
 
 const Router = () => {
   return (
@@ -13,6 +13,7 @@ const Router = () => {
         {/* <Route exact path={"/list"} component={ProductList} /> */}
         <Route exact path={"/before"} component={BeforeSignInHome} />
         <Route exact path={"/search"} component={SearchProducts} />
+        <Route exact path={"/description"} component={Description} />
         <Auth>
         <Route exact path={"/product/original/:id"} component={ProductDetail} />
           <Route exact path={"(/)?"} component={Home} />
