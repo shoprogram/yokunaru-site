@@ -4,6 +4,9 @@ import {PrimaryButton, TextInput} from "../components/UIkit";
 import {useDispatch} from "react-redux";
 import {signUp} from "../reducks/users/operations";
 import {push} from "connected-react-router";
+import { auth, db, FirebaseTimestamp, provider } from '../firebase';
+import { Button } from '@material-ui/core';
+import GoogleLogo from '../assets/img/icons/googleLogo.png'
 // import {
 //     Avatar,
 //     Button,
@@ -66,6 +69,28 @@ const SignUp = () => {
         setUsername(e.target.value)
     },[setUsername]);
 
+    const signInGoogle = async () => {
+        await auth.signInWithPopup(provider)
+        .then((result) => {
+            const user = result.user;
+            if(user) {
+                const uid = user.uid;
+                const timestamp = FirebaseTimestamp.now();
+
+                const userInitialData = {
+                    created_at: timestamp,
+                    role:"ordinary",
+                    uid: uid,
+                    updated_at:timestamp,
+                    username: "ゲスト",
+                }
+                db.collection('users').doc(uid).set(userInitialData)
+            }
+        })
+        .catch((err) => alert(err.message));
+        dispatch(push('/'))
+    };
+
     return (
         <div className="c-section-container">
             <h2 className="u-text-center u-text__headline">アカウント登録</h2>
@@ -111,6 +136,16 @@ const SignUp = () => {
                     label={"アカウントを登録する"}
                     onClick={() => dispatch(signUp(username, email, password, confirmPassword))}
                 />
+                <div className="module-spacer--small" />
+                <Button
+                    variant="contained"
+                    // classNmae={classes.submit}
+                    onClick={signInGoogle}
+                    // onClick={() => dispatch(push('/'))}
+                    >
+                    <img src={GoogleLogo} alt="" className="google-logo"/>
+                    oogle
+                </Button>
                 <div className="module-spacer--small" />
                 <p className="u-text-small" onClick={() => dispatch(push('/signin'))}>アカウントをお持ちの方はこちら</p>
             </div>

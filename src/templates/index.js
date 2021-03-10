@@ -15,4 +15,5 @@ export {default as Reset} from './Reset'
 export {default as BeforeSignInHome} from './BeforeSignInHome'
 export {default as SearchProducts} from './SearchProducts';
 export {default as Comment} from './Comment';
-export {default as Description} from'./Description'
+export {default as Description} from'./Description';
+export {default as Profile} from './Profile';

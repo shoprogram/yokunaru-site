@@ -3,7 +3,7 @@ import {PrimaryButton, TextInput} from "../components/UIkit";
 import {useDispatch} from "react-redux";
 import {signIn} from "../reducks/users/operations";
 import {push} from "connected-react-router"
-import { auth, provider } from '../firebase';
+import { auth, db, FirebaseTimestamp, provider } from '../firebase';
 import { Button } from '@material-ui/core';
 import GoogleLogo from '../assets/img/icons/googleLogo.png'
 
@@ -22,7 +22,24 @@ const SignIn = () => {
     },[]);
 
     const signInGoogle = async () => {
-        await auth.signInWithPopup(provider).catch((err) => alert(err.message));
+        await auth.signInWithPopup(provider)
+        .then((result) => {
+            const user = result.user;
+            if(user) {
+                const uid = user.uid;
+                const timestamp = FirebaseTimestamp.now();
+
+                const userInitialData = {
+                    created_at: timestamp,
+                    role:"ordinary",
+                    uid: uid,
+                    updated_at:timestamp,
+                    username: "ゲスト",
+                }
+                db.collection('users').doc(uid).set(userInitialData)
+            }
+        })
+        .catch((err) => alert(err.message));
         dispatch(push('/'))
     };
 

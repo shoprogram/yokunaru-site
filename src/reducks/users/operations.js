@@ -99,7 +99,7 @@ export const signUp = async (username, email, password, confirmPassword) => {
           const userInitialData = {
             created_at: timestamp,
             email: email,
-            role:"customer",
+            role:"ordinary",
             uid: uid,
             updated_at:timestamp,
             username: username

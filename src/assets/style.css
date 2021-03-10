@@ -189,14 +189,31 @@
 
 }
 
-
+.description-container {
+    text-align: center;
+}
 .description-title {
     font-size: 3em;
     font-weight: bold;
-    text-align: center;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 1rem;
+    height: auto;
+    width: calc(100% - 2rem);
 }
 .description-main-img {
     width: 80%;
     text-align: center;
     margin: 0 auto;
+}
+.down {
+    font-size: 300px;
+}
+.under-line {
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 1rem;
+    height: auto;
+    width: calc(100% - 2rem);
+    border-bottom: 1px dashed orange;
 }

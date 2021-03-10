@@ -63,7 +63,7 @@
   color: rgb(117, 116, 48);
   background-color: rgb(235, 225, 85);
   border-radius: 0.5em;
-  font-size: 13px;
+  /* font-size: 13px; */
 }
 
 
@@ -75,12 +75,28 @@
   background-color: rgb(185, 178, 78);
 }
 
+.description {
+  align-items: center;
+  padding: 8px 20px;
+  cursor: pointer;
+}
+.description:hover {
+  background-color: rgb(166, 167, 152);
+  border-radius: 5px;
+}
+
 /* responsive */
 @media screen and (max-width:576px) {
 .signIn {
   display: none;
 }
 .signUp {
+  display: none;
+}
+.gest {
+  display: none;
+}
+.description {
   display: none;
 }
 }

@@ -61,7 +61,7 @@ const ClosableDrawer = (props) => {
   const menus = [
     {fanc: selectMenu, label: "トウコウ", icon: <AddCircleIcon />, id: "registar", value: "/product/edit" },
     // {fanc: selectMenu, labe: "リレキ", icon: <HistoryIcon /> id: "history", value: "/history"}
-    {fanc: selectMenu, label: "プロフィール", icon: <PersonIcon />, id: "profile", value: "/user/mypage"}
+    {fanc: selectMenu, label: "プロフィール", icon: <PersonIcon />, id: "profile", value: "/profile"}
   ];
 
   useEffect(() => {

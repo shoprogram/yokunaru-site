@@ -55,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
   titleStyle: {
+    paddingTop: "0.5em",
     paddingBottom: "2em",
     fontWeight: 'bold',
     fontSize: '1.3em',
@@ -78,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "350px",
     // lineHeight: "1.3em",
     letterSpacing: "0.05em",
-    fontSize: "small",
+    fontSize: "15px",
     color: "gray",
     wordBreak: "break-all",
     overflow: "hidden",

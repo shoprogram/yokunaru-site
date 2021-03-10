@@ -1,0 +1,16 @@
+.descriptionSpace {
+  max-width: 350px;
+  letter-spacing:0.05em;
+  font-size: small;
+  color: gray;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 2em;
+  max-height: calc(2em*3);
+  cursor: pointer;
+}
+/* .descriptionSpace:hover {
+  background-color: black;
+} */

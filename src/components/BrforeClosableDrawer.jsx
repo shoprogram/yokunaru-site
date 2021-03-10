@@ -17,6 +17,10 @@ import { push } from 'connected-react-router';
 import {useDispatch} from 'react-redux';
 import { signOut } from '../reducks/users/operations';
 import { db } from '../firebase';
+import ApartmentIcon from '@material-ui/icons/Apartment';
+import { guestSignIn } from '../reducks/users/operations';
+import DescriptionIcon from '@material-ui/icons/Description';
+import GroupAddIcon from '@material-ui/icons/GroupAdd';
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -94,12 +98,29 @@ const BeforeClosableDrawer = (props) => {
           </div>
           <Divider />
           <List>
-            
+          <ListItem button key="logout" onClick={() => dispatch(push('/signup'))}>
+              <ListItemIcon>
+                <GroupAddIcon />
+              </ListItemIcon>
+              <ListItemText primary={"新規登録"} />
+            </ListItem>
             <ListItem button key="logout" onClick={() => dispatch(push('/signin'))}>
               <ListItemIcon>
                 <ExitToAppIcon />
               </ListItemIcon>
               <ListItemText primary={"ログイン"} />
+            </ListItem>
+            <ListItem button key="logout" onClick={() => dispatch(guestSignIn())}>
+              <ListItemIcon>
+                <ApartmentIcon />
+              </ListItemIcon>
+              <ListItemText primary={"ゲストログイン"} />
+            </ListItem>
+            <ListItem button key="logout" onClick={() => dispatch(push('/description'))}>
+              <ListItemIcon>
+                <DescriptionIcon />
+              </ListItemIcon>
+              <ListItemText primary={"使い方"} />
             </ListItem>
           </List>
           <Divider />
