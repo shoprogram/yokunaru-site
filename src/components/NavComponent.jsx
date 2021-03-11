@@ -11,17 +11,17 @@ const NavComponent = () => {
       <article className={ Styles.navContainer}>
         <section className={ Styles.topNavContaints}>
           <h3 className={ Styles.navTitle }>ヨクナル</h3>
-          <a href="#" className={ Styles.news }></a>
-          <a href="#" className={ Styles.trend }></a>
-          <a href="#" className={ Styles.timeLine }></a>
+          <a className={ Styles.news } onClick={() => dispatch(push("/"))} />
+          <a className={ Styles.trend } onClick={() => dispatch(push("/comingSoon"))} />
+          <a  className={ Styles.timeLine } onClick={() => dispatch(push("/comingSoon"))} />
         </section>
         <section className={ Styles.bottomNavContaints}>
           <h3 className={ Styles.navTitle }>ヨクスル</h3>
-          <a href="#" 
+          <a 
           className={ Styles.post }
           onClick={() => dispatch(push('/product/edit'))}
-          ></a>
-          <a href="#" className={ Styles.anser }></a>
+           />
+          <a className={ Styles.anser } onClick={() => dispatch(push("/comingSoon"))} />
         </section>
       </article>
     </div>

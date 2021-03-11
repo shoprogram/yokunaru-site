@@ -37,6 +37,8 @@ const HeaderComponent = () => {
         <div className={ Styles.headerTop }>
           <img src={ Logo } alt="logo" className={ Styles.logo } onClick={() => dispatch(push("/"))}/>
           <div className={ Styles.headerTopNav}>
+           <a className={ Styles.description } onClick={() => {dispatch(push("description"))
+            }}>使い方</a>
             <a className={ Styles.signIn} onClick={() => dispatch(signOut())}>ログアウト</a>
             <a className={ Styles.signUp} onClick={() => dispatch(push("/signup"))}>新規登録</a>
             <MenuRoundedIcon className={classes.menuIcon} handleDrawerToggle={handleDrawerToggle} onClick={(event) => handleDrawerToggle(event)}/>

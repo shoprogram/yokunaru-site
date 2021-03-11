@@ -13,10 +13,10 @@ const FooterComponent = () => {
         <p className={Styles.footerText}>A site where your body is made</p>
         <div className={Styles.footerIcon} >
           <div>
-        <TwitterIcon />
+        <TwitterIcon onClick={() => window.open('https://twitter.com/ryuprogramSA', '_blank')}/>
           </div>
           <div>
-        <GitHubIcon />
+        <GitHubIcon onClick={() => window.open('https://github.com/shoprogram', '_blank')}/>
           </div>
         </div>
       </div>

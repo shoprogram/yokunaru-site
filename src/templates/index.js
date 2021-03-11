@@ -17,3 +17,4 @@ export {default as SearchProducts} from './SearchProducts';
 export {default as Comment} from './Comment';
 export {default as Description} from'./Description';
 export {default as Profile} from './Profile';
+export {default as ComingSoon} from './ComingSoon';

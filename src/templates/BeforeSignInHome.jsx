@@ -6,6 +6,7 @@ import BeforeHeaderComponent from '../components/BeforeHeaderComponent';
 import BeforeNavComponent from '../components/BeforeNavComponent';
 import MainComponent from '../components/MainComponent';
 import {signOut} from '../reducks/users/operations';
+import FooterComponent from '../components/FooterComponent';
 
 const BeforeSignInHome = () => {
   const dispatch = useDispatch();
@@ -18,9 +19,16 @@ const BeforeSignInHome = () => {
         <BeforeHeaderComponent />
       </header>
       <body className={ Styles.appMain }>
+        <div className={Styles.navContaints}>
         <BeforeNavComponent />
+        </div>
+        <div className={Styles.mainContaints}>
         <MainComponent />
+        </div>
       </body>
+      <footer>
+        <FooterComponent />
+      </footer>
     </div>
   )
 }
