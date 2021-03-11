@@ -1,11 +1,26 @@
 .app {
-  height: 100vh;
-  
+  height: 100%;
+  width: 100%; 
 }
 .appMain {
-  height: 100vh;
+  height: 100%;
   /* background-color: rgb(246,246,244); */
   padding: 16px;
   display: flex;
-
+  text-align: center;
+  margin: 0 auto;
 }
+@media screen and (min-width: 1690px) and (max-width: 3000px) {
+  .mainContaints {
+    width: 100%;
+    margin: 0;
+  }
+}
+/* .navContaints {
+  margin: 0 auto;
+} */
+/* @media screen and (max-width: 500px){
+  .NavContants {
+    max-width: 200px;
+  }
+} */

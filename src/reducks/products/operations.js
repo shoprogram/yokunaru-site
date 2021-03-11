@@ -4,6 +4,7 @@ import { FirebaseTimestamp, db, auth } from '../../firebase'
 import { fetchProductsAction } from './actions'
 
 const productsRef = db.collection('products')
+const usersRef = db.collection('users')
 //firestore(db)のusesではなくproductsからデータをとってくる
 
 export const fetchProducts = (category) => {
@@ -44,6 +45,33 @@ export const saveProduct = (id, title, why, what, description, category, images)
     }
 
     return productsRef.doc(id).set(data, {merge: true})
+      .then(() => {
+        dispatch(push('/'))
+      }).catch((error) => {
+        throw new Error(error)
+      })
+  }
+}
+
+export const saveUsers = (username, email, role, uid) => {
+  return async (dispatch) => {
+    const timestamp = FirebaseTimestamp.now()
+      const data = {
+        username: username,
+        email: email,
+        uid: uid,
+        role: role,
+        updated_at: timestamp,
+      }
+
+    if (uid ==="") {
+      const ref = usersRef.doc();
+      uid = ref.uid;
+      data.uid = uid;
+      data.created_at = timestamp
+    }
+
+    return usersRef.doc(uid).set(data, {merge: true})
       .then(() => {
         dispatch(push('/'))
       }).catch((error) => {

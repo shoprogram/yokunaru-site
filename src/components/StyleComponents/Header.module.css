@@ -84,19 +84,23 @@
   background-color: rgb(166, 167, 152);
   border-radius: 5px;
 }
+.mainImg {
+  width: 100%;
+}
 
 /* responsive */
-@media screen and (max-width:576px) {
+@media screen and (max-width:1000px) {
 .signIn {
   display: none;
 }
 .signUp {
   display: none;
 }
-.gest {
+.guest {
   display: none;
 }
 .description {
   display: none;
 }
+
 }

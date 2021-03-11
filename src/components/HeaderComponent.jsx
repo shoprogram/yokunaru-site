@@ -16,9 +16,6 @@ const useStyles = makeStyles ((theme) => ({
     cursor: "pointer",
     marginLeft: "30px",
   },
-  mainImg: {
-    width: "100%",
-  },
 }))
 
 const HeaderComponent = () => {
@@ -47,7 +44,7 @@ const HeaderComponent = () => {
         </div>
         <ClosableDrawer open={open} onClose={handleDrawerToggle}/>
       </div>
-        <img src={mainImg} alt="" className={classes.mainImg}/>
+        <img src={mainImg} alt="" className={Styles.mainImg}/>
     </div>
   )
 }

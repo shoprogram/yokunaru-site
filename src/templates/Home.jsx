@@ -6,6 +6,7 @@ import HeaderComponent from '../components/HeaderComponent';
 import NavComponent from '../components/NavComponent';
 import MainComponent from '../components/MainComponent';
 import {signOut} from '../reducks/users/operations';
+import FooterComponent from '../components/FooterComponent';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -21,9 +22,16 @@ const Home = () => {
         <p>ユーザー名：{username}</p> */}
       </header>
       <body className={ Styles.appMain }>
+        <div className={Styles.navContaints}>
         <NavComponent />
+        </div>
+        <div className={Styles.mainContaints}>
         <MainComponent />
+        </div>
       </body>
+      <footer>
+        <FooterComponent />
+      </footer>
     </div>
   )
 }

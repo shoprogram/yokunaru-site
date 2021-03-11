@@ -24,18 +24,22 @@ import { DockOutlined } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({
   root: {
     [theme.breakpoints.down('sm')]: {
-      margin: 8,
+      marginBottom: 8,
+      padding: 0,
       width: 'calc(100% - 16px)',
+      maxWidth: "230px",
       maxHeight: 'auto'
     },
     [theme.breakpoints.up('sm')]: {
       margin: 8,
       width: 'calc(50% - 16px)',
+      maxWidth: '100%',
       maxHeight: 'auto'
     },
     [theme.breakpoints.up('lg')]: {
       margin: 16,
       width: 'calc(25% - 32px)',
+      maxWidth: '100%',
       maxHeight: '360px'
     }
   },
@@ -147,6 +151,7 @@ const ProductCard = (props) => {
   //   });
   // }
 
+  console.log(props);
   return (
     <Card className={classes.root}>
       <CardMedia
