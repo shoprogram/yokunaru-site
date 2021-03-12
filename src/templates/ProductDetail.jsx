@@ -3,13 +3,15 @@ import { auth, db, FirebaseTimestamp } from '../firebase';
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from '@material-ui/core';
 import HeaderComponent from '../components/HeaderComponent';
-import SendIcon from "@material-ui/icons/Send";
+import MessageIcon from '@material-ui/icons/Message';
 import { push } from 'connected-react-router';
 import Styles from './tempStyles/ProductDetail.module.css';
 import { getProducts } from '../reducks/products/selectors';
 import { DockOutlined } from '@material-ui/icons';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import FooterComponent from '../components/FooterComponent';
+import InsertCommentIcon from '@material-ui/icons/InsertComment';
 
 // import { BorderLeftTwoTone } from '@material-ui/icons';
 
@@ -61,9 +63,12 @@ const useStyles = makeStyles((theme) => ({
   // },
   commentButton: {
     border: "none",
-    color: "black",
+    color: "gray",
     backgroundColor: "transparent",
     cursor: "pointer",
+    position: "relative",
+    top: "6px",
+    left: "6px",
   },
   commentButtonDisable: {
     display: "none",
@@ -206,7 +211,9 @@ const ProductDetail = (props) => {
   return (
     <>
       <HeaderComponent />
-      <section className={classes.detail}>
+      <article className={classes.detail}>
+
+      <section>
         {product && (
           <div className="p-grid-row">
             {/* <div className={classes.images}> */}
@@ -218,6 +225,12 @@ const ProductDetail = (props) => {
           </div>
         )}
       </section>
+      <div className="module-spacer--large"/>
+      <div className="module-spacer--medium"/>
+      <div className="comment-line"/>
+      <h1>
+        コメント一覧
+      </h1>
       <section className={Styles.commentArea}>
         <div  className={Styles.commentDisplay}>
         {/* {products.text} */}
@@ -228,8 +241,9 @@ const ProductDetail = (props) => {
           </div>
         ))}
         </div>
-        <form onSubmit={newComment}>
-          <div className={classes.commentForm}>
+        <div className="module-spacer--medium"/>
+        <form onSubmit={newComment} className={Styles.commentForm}>
+          <div>
             <input 
               className={classes.commentInput} 
               type="text" 
@@ -242,7 +256,7 @@ const ProductDetail = (props) => {
               className={comment ? classes.commentButton : classes.commentButtonDisable} 
               type="submit"
             >
-              <SendIcon className={classes.sendIcon}/>
+              <MessageIcon />
             </button>
           </div>
         </form>
@@ -256,10 +270,12 @@ const ProductDetail = (props) => {
           </IconButton>
         </div> */}
       </section>
+      </article>
       {/* <button
       onClick={() => dispatch(push("/product/comment/"+id))}
       >コメント
       </button> */}
+      {/* <FooterComponent /> */}
     </>
   )
 }
