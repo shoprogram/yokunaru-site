@@ -11,15 +11,11 @@ import FooterComponent from '../components/FooterComponent';
 const Home = () => {
   const dispatch = useDispatch();
   const selector = useSelector(state => state);
-  // const uid = getUserId(selector);
-  // const username = getUsername(selector)
 
   return (
     <div className={ Styles.app }>
       <header className={ Styles.appHeader }>
         <HeaderComponent />
-        {/* <p>ユーザーID:{uid}</p>
-        <p>ユーザー名：{username}</p> */}
       </header>
       <body className={ Styles.appMain }>
         <div className={Styles.navContaints}>

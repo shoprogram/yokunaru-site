@@ -1,7 +1,7 @@
 import React from 'react'
 import {Route, Switch} from 'react-router';
 import Auth from './Auth';
-import {BeforeSignInHome, Home, SignUp, SignIn, Reset, ProductEdit, ProductDetail, SearchProducts, Comment, Description, Profile, ComingSoon} from './templates';
+import {BeforeSignInHome, Home, SignUp, SignIn, Reset, ProductEdit, ProductDetail, SearchProducts, Description, Profile, ComingSoon} from './templates';
 
 const Router = () => {
   return (
