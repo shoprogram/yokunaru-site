@@ -96,29 +96,3 @@ export const saveUsers = (username, email, role, uid) => {
 //     </>
 //   )
 // }
-
-// export const saveComment = (commentId, comment) =>{
-//   console.log(commentId);
-//   return async (dispatch) => {
-//     const timestamp = FirebaseTimestamp.now()
-  
-//     const data = {
-//       comment: comment,
-//       updated_at: timestamp,
-//     }
-
-//     return db.collection('products').doc(commentId).set({data})
-//       .then(() => {
-//         dispatch(push('/'))
-//       }).catch((error) => {
-//         throw new Error(error)
-//       })
-//   }
-// }
-
-
-// export const searchProducts = () => {
-  
-// }
-
-

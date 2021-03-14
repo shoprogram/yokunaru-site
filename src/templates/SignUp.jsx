@@ -1,4 +1,3 @@
-//アカウントを作る
 import React, { useCallback, useState} from 'react';
 import {PrimaryButton, TextInput} from "../components/UIkit";
 import {useDispatch} from "react-redux";

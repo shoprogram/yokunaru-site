@@ -153,7 +153,3 @@ export const guestSignIn = () => {
     })
   }
 }
-
-// export const saveProfile = () => {
-
-// }

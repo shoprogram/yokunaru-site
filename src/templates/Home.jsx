@@ -1,11 +1,9 @@
 import React from 'react'
-import {getUserId, getUsername} from "../reducks/users/selectors";
 import {useSelector, useDispatch} from "react-redux";
 import Styles from "./Home.module.css";
 import HeaderComponent from '../components/HeaderComponent';
 import NavComponent from '../components/NavComponent';
 import MainComponent from '../components/MainComponent';
-import {signOut} from '../reducks/users/operations';
 import FooterComponent from '../components/FooterComponent';
 
 const Home = () => {

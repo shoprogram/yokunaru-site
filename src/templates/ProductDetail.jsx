@@ -56,11 +56,6 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: "60px"
     },
   },
-  // sendIcon: {
-  //   marginTop: "15px",
-  //   color: "black",
-  //   cursor: "pointer",
-  // },
   commentButton: {
     border: "none",
     color: "gray",
@@ -77,10 +72,6 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     right: "30%",
     top: "30%",
-    // zIndex: "5",
-    // float: "left",
-    // marginLeft: "18%",
-    // marginBottom: "10%",
   },
   likeButton: {
     fontWeight: "800",
