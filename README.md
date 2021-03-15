@@ -20,7 +20,7 @@ URL：
 ## 使用技術
 
 - HTML・CSS
-- Javascript
+- JavaScript
 - React(hooks,Redux,SPAを用いた開発)
 - Firebase
 
