@@ -105,7 +105,6 @@ const ProductCard = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [expanded, setExpanded] = React.useState(false);
-  const images = (props.images.length > 0) ? props.images : [NoImage];
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -151,12 +150,11 @@ const ProductCard = (props) => {
   //   });
   // }
 
-  console.log(props);
   return (
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
-        image={props.images[0].path}
+        image={(props.images[0]) ? props.images[0].path : [NoImage]}
         onClick={() => dispatch(push('/product/original/'+props.id))}
       />
       <CardContent 

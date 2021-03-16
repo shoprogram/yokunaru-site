@@ -13,8 +13,8 @@ const Router = () => {
         <Route exact path={"/search"} component={SearchProducts} />
         <Route exact path={"/description"} component={Description} />
         <Route exact path={"/comingSoon"} component={ComingSoon} />
+        <Route exact path={"/product/original/:id"} component={ProductDetail} />
         <Auth>
-          <Route exact path={"/product/original/:id"} component={ProductDetail} />
           <Route exact path={"(/)?"} component={Home} />
           {/* <Route exact path={"/signout"} component={signOut} /> */}
           <Route exact path={"/profile"} component={Profile}/>

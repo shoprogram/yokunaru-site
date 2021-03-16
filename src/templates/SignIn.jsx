@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {PrimaryButton, TextInput} from "../components/UIkit";
+import {HomeBackButton, PrimaryButton, TextInput} from "../components/UIkit";
 import {useDispatch} from "react-redux";
 import {signIn} from "../reducks/users/operations";
 import {push} from "connected-react-router"
@@ -72,8 +72,10 @@ const SignIn = () => {
             </Button>
 
             <div className="module-spacer--small" />
-                <p className="" onClick={() => dispatch(push('/signin/reset'))}>パスワードを忘れた方はこちら</p>
-                <p className="u-text-small" onClick={() => dispatch(push('/signup'))}>アカウント登録がまだのかたはこちら</p>
+                <p className="pointer" onClick={() => dispatch(push('/signin/reset'))}>パスワードを忘れた方はこちら</p>
+                <p className="u-text-small pointer" onClick={() => dispatch(push('/signup'))}>アカウント登録がまだの方はこちら</p>
+                <div className="module-spacer--small" />
+            <HomeBackButton />
             </div>
         </div>
     );

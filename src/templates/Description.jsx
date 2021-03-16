@@ -2,6 +2,7 @@ import React from 'react'
 import mainImage from '../components/img/description.png'
 import headerImage from '../components/img/headerDescription.png';
 import drawerImage from '../components/img/menuDescription.png'
+import { HomeBackButton } from '../components/UIkit';
 
 const Description = () => {
   return (
@@ -16,8 +17,7 @@ const Description = () => {
     <div className="under-line"></div>
     <img className="c-section-container-wide" src={drawerImage} alt="説明用初期画像"/>
     <p className="c-section-container-wide">③右上のメニューを開くとカテゴリ検索できます</p>
-    <div>
-    </div>
+    <HomeBackButton />
     </div>
   )
 }

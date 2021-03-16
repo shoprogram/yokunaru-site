@@ -12,7 +12,9 @@ import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FooterComponent from '../components/FooterComponent';
 import InsertCommentIcon from '@material-ui/icons/InsertComment';
-
+import BeforeHeaderComponent from '../components/BeforeHeaderComponent';
+import { HomeBackButton } from '../components/UIkit';
+import NoImage from '../assets/img/src/no_image.png';
 // import { BorderLeftTwoTone } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
@@ -80,6 +82,9 @@ const useStyles = makeStyles((theme) => ({
   checkout: {
     color: "red",
   },
+  hidden: {
+    display: "none",
+  },
 }))
 
 const ProductDetail = (props) => {
@@ -96,7 +101,7 @@ const ProductDetail = (props) => {
       setUser(user);
     });
   },[]);
-  // const products = getProducts(selector);
+  const products = getProducts(selector);
   
   const [product, setProduct] = useState(null);
 
@@ -135,8 +140,8 @@ const ProductDetail = (props) => {
         snapshot.docs.map((doc) => ({
           id: doc.id,
           // avatar: doc.data().avatar,
+          username: doc.data().username,
           text: doc.data().text,
-          // username: doc.data().username,
           timestamp: doc.data().timestamp,
         }))
       );
@@ -146,15 +151,17 @@ const ProductDetail = (props) => {
     };
   }, [id]);
 
-  const newComment = (e) => {
-    e.preventDefault();
-    db.collection('products').doc(id).collection("comments").add({
-      uid: user.uid,
-      text: comment,
-      timestamp: FirebaseTimestamp.now(),      
-    });
-    setComment("");
-  };
+console.log(user)
+    const newComment = (e) => {
+      e.preventDefault();
+      db.collection('products').doc(id).collection("comments").add({
+        uid: user.uid,
+        username: user.displayName,
+        text: comment,
+        timestamp: FirebaseTimestamp.now(),      
+      });
+      setComment("");
+    };
 
 
 //like処理
@@ -201,14 +208,13 @@ const ProductDetail = (props) => {
 
   return (
     <>
-      <HeaderComponent />
+      {user ? <HeaderComponent/> : <BeforeHeaderComponent/>}
       <article className={classes.detail}>
-
       <section>
         {product && (
           <div className="p-grid-row">
             {/* <div className={classes.images}> */}
-              <img className={classes.images} src={product.data.images[0].path} alt="トップ画像"/>
+              <img className={classes.images} src={product.data.images[0] ? product.data.images[0].path : [NoImage]} alt="トップ画像"/>
             {/* </div> */}
             <h2 className={classes.title}>{product.data.title}</h2>
             <p>{product.data.description}</p>
@@ -227,7 +233,7 @@ const ProductDetail = (props) => {
         {/* {products.text} */}
         {comments.map((com) => (
           <div>
-            <div>{new Date(com.timestamp?.toDate()).toLocaleString()}</div>
+            <div>{new Date(com.timestamp?.toDate()).toLocaleString()} | ユーザー名：{com.username}</div>
             <div>{com.text}</div>
           </div>
         ))}
@@ -236,12 +242,13 @@ const ProductDetail = (props) => {
         <form onSubmit={newComment} className={Styles.commentForm}>
           <div>
             <input 
-              className={classes.commentInput} 
-              type="text" 
+              className={user ? classes.commentInput : classes.hidden} 
+              type={user ? "text" : "hidden"} 
               placeholder="コメントを入力" 
               value={comment} 
               onChange={(e) => setComment(e.target.value)}
             />
+            <p className={user ? classes.hidden : classes.before}>ログインするとコメントができます</p>
             <button 
               disabled={!comment} 
               className={comment ? classes.commentButton : classes.commentButtonDisable} 
@@ -261,6 +268,8 @@ const ProductDetail = (props) => {
           </IconButton>
         </div> */}
       </section>
+      <div className="module-spacer--large"/>
+      <HomeBackButton />
       </article>
       {/* <button
       onClick={() => dispatch(push("/product/comment/"+id))}

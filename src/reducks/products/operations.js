@@ -23,8 +23,20 @@ export const fetchProducts = (category) => {
   }
 }
 
-export const saveProduct = (id, title, why, what, description, category, images) => {
+export const saveProduct = (id, title, why, what, description, category, images, user) => {
   return async (dispatch) => {
+    if(title === "" || description === "" || category === "") {
+      alert("必須項目を入力してください")
+      return false
+    }
+
+    // const [user, setUser] = useState(null);
+    // useEffect(() => {
+    //   return auth.onAuthStateChanged(user => {
+    //     setUser(user);
+    //   });
+    // },[]);
+
     const timestamp = FirebaseTimestamp.now()
       const data = {
         category: category,
@@ -34,7 +46,7 @@ export const saveProduct = (id, title, why, what, description, category, images)
         why: why,
         what: what,
         updated_at: timestamp,
-        // username: uid,
+        uid: user.uid,
       }
 
     if (id ==="") {

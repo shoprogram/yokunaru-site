@@ -220,7 +220,8 @@
     width: calc(100% - 2rem);
     border-bottom: 1px dashed orange;
 }
-.comment-line {
 
 
+.pointer {
+    cursor: pointer;
 }

@@ -153,3 +153,10 @@ export const guestSignIn = () => {
     })
   }
 }
+
+export const updateInfo = (userName) => {
+  let user = auth.currentUser;
+  user.updateProfile({
+    displayName: userName,
+  });
+}

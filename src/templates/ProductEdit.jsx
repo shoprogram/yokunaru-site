@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react'
-import {PrimaryButton, TextInput, SelectBox} from "../components/UIkit";
+import {PrimaryButton, TextInput, SelectBox, HomeBackButton} from "../components/UIkit";
 import { useDispatch } from "react-redux";
 import {saveProduct} from "../reducks/products/operations";
 import ImageArea from '../components/Products/ImageArea';
@@ -12,6 +12,14 @@ const ProductEdit = () => {
   if(id !=="") {
     id = id.split('/')[1];
   }
+
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    return auth.onAuthStateChanged(user => {
+      setUser(user);
+    });
+  },[]);
+
   const [title, setTitle] = useState(""),
         [images, setImages] = useState([]),
         [why, setWhy] = useState(""),
@@ -78,11 +86,11 @@ const ProductEdit = () => {
                     onChange={inputTitle} rows={1} value={title} type={"text"}
                 />
                  <TextInput
-                    fullWidth={true} label={"どんな人に向けて？"} multiline={true} required={true}
+                    fullWidth={true} label={"どんな人に向けて？"} multiline={true} 
                     onChange={inputWhy} rows={1} value={why} type={"text"}
                 />
                  <TextInput
-                    fullWidth={true} label={"なんのためにする？"} multiline={true} required={true}
+                    fullWidth={true} label={"なんのためにする？"} multiline={true} 
                     onChange={inputWhat} rows={1} value={what} type={"text"}
                 />
                 <TextInput
@@ -92,14 +100,16 @@ const ProductEdit = () => {
                 <SelectBox
                     label={"カテゴリー"} options={categories} required={true} select={setCategory} value={category}
                 />
+                <p>※タイトル・内容・カテゴリーは必ず入力してください</p>
                 <div className="module-spacer--small"/>
                 <div className="module-spacer--small" />
                 <div className="center">
                   <PrimaryButton
                   label={"内容を投稿"}
-                  onClick={() => dispatch(saveProduct(id, title, why, what, description, category, images))}
+                  onClick={() => dispatch(saveProduct(id, title, why, what, description, category, images, user))}
                   />
                 </div>
+                <HomeBackButton />
             </div>
     </section>
   )

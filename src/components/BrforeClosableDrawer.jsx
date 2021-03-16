@@ -51,31 +51,6 @@ const BeforeClosableDrawer = (props) => {
     setKeyword(event.target.value)
   },[setKeyword]);
 
-  const selectMenu = (event,path) => {
-    dispatch(push(path));
-    props.onClose(event)
-  }
-
-  const [filters, setFilters] = useState([
-    {fanc: selectMenu, label: "すべて", id: "all", value: "/" },
-    // {fanc: selectMenu, label: "すべて", id: "all", value: "/" },
-    // {fanc: selectMenu, label: "すべて", id: "all", value: "/" },
-  ])
-
-
-  useEffect(() => {
-    db.collection('categories')
-    .orderBy('order', 'asc')
-    .get()
-    .then(snapshots => {
-      const list = []
-      snapshots.forEach(snapshot => {
-        const category = snapshot.data()
-        list.push({fanc: selectMenu, label: category.name, id: category.id, value: `/?category=${category.id}`})
-      })
-      setFilters(prevState => [...prevState, ...list])
-    })
-  },[]);
 
   return (
     <div>
@@ -124,13 +99,6 @@ const BeforeClosableDrawer = (props) => {
             </ListItem>
           </List>
           <Divider />
-          <List>
-            {filters.map(filter => (
-              <ListItem button key={filter.id} onClick={(e) => filter.fanc(e, filter.value)}>
-                <ListItemText primary={filter.label} />
-              </ListItem>
-            ))}
-          </List>
         </div>
       </Drawer>
     </div>

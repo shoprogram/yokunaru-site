@@ -56,7 +56,7 @@
 
 .guest {
   align-items: center;
-  text-align: center;
+  /* text-align: center; */
   padding: 8px 20px;
   /* margin:; */
   font-weight: bold;
