@@ -63,9 +63,7 @@ const SignIn = () => {
                 <div className="module-spacer--small" />
             <Button
                 variant="contained"
-                // classNmae={classes.submit}
                 onClick={signInGoogle}
-                // onClick={() => dispatch(push('/'))}
             >
                 <img src={GoogleLogo} alt="" className="google-logo"/>
                 oogle

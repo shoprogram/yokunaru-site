@@ -33,7 +33,6 @@ const uploadImage = useCallback((event) => {
   const file = event.target.files;
   let blob = new Blob(file, { type: "image/jpeg" });
 
-  // Generate random 16 digits strings
   const S="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   const N=16;
   const fileName = Array.from(crypto.getRandomValues(new Uint32Array(N))).map((n)=>S[n%S.length]).join('')
@@ -42,7 +41,6 @@ const uploadImage = useCallback((event) => {
   const uploadTask = uploadRef.put(blob);
 
   uploadTask.then(() => {
-      // Handle successful uploads on complete
       uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
           const newImage = {id: fileName, path: downloadURL};
           props.setImages((prevState => [...prevState, newImage]))
@@ -50,7 +48,6 @@ const uploadImage = useCallback((event) => {
   })
 }, [props.setImages])
 
-//オブジェクトが空かどうか判定する処理
 const isEmpty = (obj) => {
   return !Object.keys(obj).length;
 }

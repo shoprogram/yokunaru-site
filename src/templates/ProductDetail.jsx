@@ -4,18 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from '@material-ui/core';
 import HeaderComponent from '../components/HeaderComponent';
 import MessageIcon from '@material-ui/icons/Message';
-import { push } from 'connected-react-router';
 import Styles from './tempStyles/ProductDetail.module.css';
 import { getProducts } from '../reducks/products/selectors';
-import { DockOutlined } from '@material-ui/icons';
-import IconButton from '@material-ui/core/IconButton';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import FooterComponent from '../components/FooterComponent';
-import InsertCommentIcon from '@material-ui/icons/InsertComment';
 import BeforeHeaderComponent from '../components/BeforeHeaderComponent';
 import { HomeBackButton } from '../components/UIkit';
 import NoImage from '../assets/img/src/no_image.png';
-// import { BorderLeftTwoTone } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   detail: {
@@ -109,7 +102,6 @@ const ProductDetail = (props) => {
   const data = {
     text: comment,
       timestamp: FirebaseTimestamp.now(),
-      // username: selector.username,
   }
 
   
@@ -139,7 +131,6 @@ const ProductDetail = (props) => {
       setComments(
         snapshot.docs.map((doc) => ({
           id: doc.id,
-          // avatar: doc.data().avatar,
           username: doc.data().username,
           text: doc.data().text,
           timestamp: doc.data().timestamp,
@@ -162,49 +153,6 @@ console.log(user)
       });
       setComment("");
     };
-
-
-//like処理
-  // const [like, setLike] = useState([
-  //   {
-  //     likeCount: 0,
-  //     liked:false,
-  //   }
-  // ]);
-  // const [likes, setLikes] = useState([
-  //   {
-  //     likeCount: 0,
-  //   }
-  // ]);
-
-  // useEffect(() => {
-  //   const selectLikes = db
-  //   .collection("products")
-  //   .doc(id)
-  //   .collection("likes")
-  //   .onSnapshot((snapshot) => {
-  //     setLikes(
-  //       snapshot.docs.map((doc) => ({
-  //         likeCount: doc.data().likeCount,
-  //       }))
-  //     );
-  //   });
-  //   return () => {
-  //     selectLikes();
-  //   };
-  // },[id]);
-
-  // const likeClick = () => {
-  //   setLike({
-  //     likeCount: like.likeCount + (like.liked ? -1 : 1),
-  //     liked: !like.liked
-  //   });
-  //   db.collection('products').doc(id).collection("likes").add({
-  //     uid: user.uid,
-  //     likeCount: like.likeCount,
-  //     timestamp: FirebaseTimestamp.now(),      
-  //   });
-  // }
 
   return (
     <>
@@ -230,7 +178,6 @@ console.log(user)
       </h1>
       <section className={Styles.commentArea}>
         <div  className={Styles.commentDisplay}>
-        {/* {products.text} */}
         {comments.map((com) => (
           <div>
             <div>{new Date(com.timestamp?.toDate()).toLocaleString()} | ユーザー名：{com.username}</div>
@@ -258,24 +205,10 @@ console.log(user)
             </button>
           </div>
         </form>
-        {/* <div className={classes.likeArea}>
-            いいね！
-          <IconButton className={ like.liked ? classes.checkout : ""} onClick={likeClick}>
-          {likes.map((com) => (
-            <div>{com.likeCount}</div>
-          ))}
-            <FavoriteIcon className={classes.likeButton}/>
-          </IconButton>
-        </div> */}
       </section>
       <div className="module-spacer--large"/>
       <HomeBackButton />
       </article>
-      {/* <button
-      onClick={() => dispatch(push("/product/comment/"+id))}
-      >コメント
-      </button> */}
-      {/* <FooterComponent /> */}
     </>
   )
 }

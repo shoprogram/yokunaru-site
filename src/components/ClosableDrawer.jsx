@@ -9,7 +9,6 @@ import {makeStyles} from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import HistoryIcon from '@material-ui/icons/History';
 import PersonIcon from '@material-ui/icons/Person';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {TextInput} from  './UIkit/index';
@@ -54,13 +53,10 @@ const ClosableDrawer = (props) => {
 
   const [filters, setFilters] = useState([
     {fanc: selectMenu, label: "すべて", id: "all", value: "/" },
-    // {fanc: selectMenu, label: "すべて", id: "all", value: "/" },
-    // {fanc: selectMenu, label: "すべて", id: "all", value: "/" },
   ])
 
   const menus = [
     {fanc: selectMenu, label: "トウコウ", icon: <AddCircleIcon />, id: "registar", value: "/product/edit" },
-    // {fanc: selectMenu, labe: "リレキ", icon: <HistoryIcon /> id: "history", value: "/history"}
     {fanc: selectMenu, label: "プロフィール", icon: <PersonIcon />, id: "profile", value: "/profile"}
   ];
 

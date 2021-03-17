@@ -1,25 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { yellow } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import NoImage from '../../assets/img/src/no_image.png';
 import {push} from 'connected-react-router';
 import {useDispatch} from 'react-redux';
-import { db } from '../../firebase';
-import { DockOutlined } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
-    // display: "-webkit-box",
     lineHeight: "1.3em",
     maxHeight: "calc(1.3em*1)",
   },
@@ -81,7 +68,6 @@ const useStyles = makeStyles((theme) => ({
   },
   descriptionSpace: {
     maxWidth: "350px",
-    // lineHeight: "1.3em",
     letterSpacing: "0.05em",
     fontSize: "15px",
     color: "gray",
@@ -111,45 +97,6 @@ const ProductCard = (props) => {
   };
 
 
-
-  // const [like, setLike] = useState([
-  //   {
-  //     likeCount: 0,
-  //     liked:false,
-  //   }
-  // ]);
-  // const [likes, setLikes] = useState([
-  //   {
-  //     likeCount: 0,
-  //   }
-  // ]);
-
-  // const id = props.id
-  // console.log(id);
-  // useEffect(() => {
-  //   const selectLikes = db
-  //   .collection("products")
-  //   .doc(id)
-  //   .collection("likes")
-  //   .onsnapshot((snapshot) => {
-  //     setLikes(
-  //       snapshot.docs.map((doc) => ({
-  //         likeCount: like.likeCount,
-  //       }))
-  //     );
-  //   });
-  //   return () => {
-  //     selectLikes();
-  //   };
-  // },[id]);
-
-  // const likeClick = () => {
-  //   setLike({
-  //     likeCount: like.likeCount + (like.liked ? -1 : 1),
-  //     liked: !like.liked
-  //   });
-  // }
-
   return (
     <Card className={classes.root}>
       <CardMedia
@@ -173,40 +120,6 @@ const ProductCard = (props) => {
           {props.description}
         </Typography>
       </CardContent>
-      {/* <div className={classes.flex}> */}
-      {/* <CardActions disableSpacing className={classes.snsContainer}>
-        <IconButton aria-label="add to favorites" onClick={likeClick} className={ like.liked ? classes.checkout : ""}>
-          {like.liked ? classes.check : ''}
-          <FavoriteIcon />
-        </IconButton>
-          {likes.map((com) => (
-            <div>{com.likeCount}</div>
-          ))}
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-      </CardActions> */}
-      {/* <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-         icon   
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-
-        title={} ここにアバターnameをいれる
-        subheader={props.updated_at}
-      />
-      <CardActions className={classes.iconSpace}>
-        <IconButton aria-label="add to favorites">
-        </IconButton>
-        <FavoriteIcon />
-      </CardActions> */}
-      {/* </div> */}
     </Card>
   );
 }

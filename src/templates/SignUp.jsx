@@ -6,51 +6,15 @@ import {push} from "connected-react-router";
 import { auth, db, FirebaseTimestamp, provider } from '../firebase';
 import { Button } from '@material-ui/core';
 import GoogleLogo from '../assets/img/icons/googleLogo.png'
-// import {
-//     Avatar,
-//     Button,
-//     CssBaseline,
-//     TextField,
-//     Paper,
-//     Grid,
-//     Typography,
-//     makeStyles,
-//     Modal,
-//     IconButton,
-//     Box,
-//   } from "@material-ui/core";
-//   import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-
-// const useStyles = makeStyles(() => ({
-//     addIconLoaded: {
-//         cursor: "pointer",
-//         color: "gray",
-//     },
-//     addIcon: {
-//         cursor: "pointer",
-//         color: "gray",
-//     },
-//     hiddenIcon: {
-//         textAlign: "center",
-//         display: "none",
-//     },
-// }));
 
 const SignUp = () => {
     const dispatch = useDispatch();
-    // const classes = useStyles();
     
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const [username, setUsername] = useState("");
     const [avatarImage, setAvatarImage] =useState();
-    // const onChangeImageHandler = (e) => {
-    //     if (e.target.files[0]) {
-    //         setAvatarImage(e.target.files[0]);
-    //         e.target.value ="";
-    //     }
-    // }
 
     const inputEmail = useCallback((e) => {
         setEmail(e.target.value)
@@ -94,25 +58,6 @@ const SignUp = () => {
         <div className="c-section-container">
             <h2 className="u-text-center u-text__headline">アカウント登録</h2>
             <div className="module-spacer--medium" />
-            {/* <Box textAlign="center">
-                  <IconButton>
-                    <label>
-                      <AccountCircleIcon
-                        fontSize="large"
-                        className={
-                          avatarImage
-                            ? classes.addIconLoaded
-                            : classes.addIcon
-                        }
-                      />
-                      <input
-                        className={classes.hiddenIcon}
-                        type="file"
-                        onChange={onChangeImageHandler}
-                      />
-                    </label>
-                  </IconButton>
-                </Box> */}
             <TextInput
                 fullWidth={true} label={"ユーザー名"} multiline={false} required={true}
                 rows={1} value={username} type={"text"} onChange={inputUsername}
@@ -138,9 +83,7 @@ const SignUp = () => {
                 <div className="module-spacer--small" />
                 <Button
                     variant="contained"
-                    // classNmae={classes.submit}
                     onClick={signInGoogle}
-                    // onClick={() => dispatch(push('/'))}
                     >
                     <img src={GoogleLogo} alt="" className="google-logo"/>
                     oogle

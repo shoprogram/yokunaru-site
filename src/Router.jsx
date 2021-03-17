@@ -16,17 +16,12 @@ const Router = () => {
         <Route exact path={"/product/original/:id"} component={ProductDetail} />
         <Auth>
           <Route exact path={"(/)?"} component={Home} />
-          {/* <Route exact path={"/signout"} component={signOut} /> */}
           <Route exact path={"/profile"} component={Profile}/>
           <Route path={"/product/edit(/:id)?"} component={ProductEdit} />
-          {/* <Route exact path={"/product/edit"} component={ProductEdit} /> */}
           <Route exact path={"/product/comment/:id"} component={Comment} />
 
         </Auth>
       </Switch>
   )
 }
-// {/* Switch＋Routeで所定のURL別にページ遷移を行う */}
-// Authの中はログイン状態でのみ表示されるようになっている
-
 export default Router;

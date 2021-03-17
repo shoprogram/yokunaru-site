@@ -11,52 +11,11 @@ const Profile = () => {
         [email, setEmail] = useState(""),
         [role, setRole] = useState(""),
         [uid, setUid] = useState("");
-  //内容増やすときはここ追加
-  
+    
   const inputUserName = useCallback((event) => {
     setUserName(event.target.value)
   },[setUserName]);
   
-  // const inputEmail= useCallback((event) => {
-  //   setEmail(event.target.value)
-  // },[setEmail]);
-
-  // const inputRole = useCallback((event) => {
-  //   setRole(event.target.value)
-  // },[setRole]);
-
-  // const inputUid = useCallback((event) => {
-  //   setUid(event.target.value)
-  // },[setUid]);
-
-
-  // const [user, setUser] = useState("");
-  // useEffect( () => {
-  //   return auth.onAuthStateChanged(user => {
-  //     setUser(user);
-  //   });
-  // },[]);
-  
-  // const id = user.uid
-  // console.log(id)
-
-
-  // const [users, setUsers] = useState(null);
-  // useEffect(() => {
-  //     db.collection('users').doc(id).get().then(doc => {
-  //         const data = doc.data()
-  //         setUsers({data})
-  //       })
-  //   },[]);
-
-
-  // const [user, setUser] = useState(null);
-  // useEffect(() => {
-  //   return auth.onAuthStateChanged(user => {
-  //     setUser(user);
-  //   });
-  // },[]);
-
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       if(user){
@@ -73,38 +32,6 @@ const Profile = () => {
     })
   },[]);
 
-  // const [myProducts, setMyProducts] = useState([
-  //   {
-  //     titele: "",
-  //     timestamp: null,
-  //   },
-  // ]);
-  
-  // useEffect(() => {
-  //   const uid = user.uid;
-  //   const unSub = db
-  //   .collection("products")
-  //   .where(uid, "==" , "uid")
-  //   .orderBy("timestamp", "desc")
-  //   .get()
-  //   .then((querysnapshot) => {
-  //      const list = []
-  //       querysnapshot.forEach((snapshot => {
-  //         const myPro = snapshot
-  //         list.push({uid: myPro.})
-  //       })
-  //     );
-  //   });
-  //   return () => {
-  //     unSub();
-  //   };
-  // }, []);
-
-  // const updateInfo = async () => {
-  //   await auth.updateProfile({
-  //     displayName: userName,
-  //   })
-  // }
   return (
     <div className="c-section-container">
       <h2 className="u-text__headline u-text-center">プロフィール内容の登録・編集</h2>

@@ -5,10 +5,6 @@ import {
 } from 'redux';
 import {connectRouter, routerMiddleware} from "connected-react-router";
 import thunk from 'redux-thunk';
-//react-router(reactルーティング用のライブラリ)
-//middlewareとして導入
-
-//connected-react-router(Reduxのstoreでルーティングを管理:eact-router v4,v5と互換性がある)
 
 import {ProductsReducer} from '../products/reducers';
 import {UsersReducer} from '../users/reducers';

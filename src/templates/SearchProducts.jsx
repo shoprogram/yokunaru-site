@@ -1,7 +1,4 @@
 import React, { useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import { fetchProducts } from '../reducks/products/operations';
-import {getProducts} from "../reducks/products/selectors";
 import { TextField, ListItem, ListItemText } from "@material-ui/core/";
 
 const products = () => [
@@ -21,18 +18,12 @@ const ListItems = (props) => (
 );
 
 const SearchProducts = () => {
-  // const dispatch = useDispatch();
-  // const selector = useSelector((state) => state);
-  // const products = getProducts(selector);
   
   const [keyword, setKeyword] = useState("");
   const [showLists, setShowLists] = useState(false);
   const [filteredProducts, setfilteredProducts] = useState(products);
   
-  // useEffect(() => {
-    //   dispatchEvent(fetchProducts)
-    // },[]);
-    
+
     useEffect(() => {
       if(keyword === "") {
         setfilteredProducts(products);
@@ -43,11 +34,6 @@ const SearchProducts = () => {
       .trim()
       .toLowerCase()
       .match(/[^\s]+/g);
-      
-      // if (searchKeywords === null) {
-      //   setFilteredProducts(products);
-      //   return;
-      // }
       
       const result = products.filter((product) => {
         searchKeywords.every((kw) => product.toLowerCase().indexOf(kw) !== -1)

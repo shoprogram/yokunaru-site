@@ -18,13 +18,11 @@ const ProductList = () => {
 
   return (
      <section className="c-section-wrapin">
-       {/* <div className="p-grid_row"> */}
     {products.length > 0 && (
       products.map(product => (
         <ProductCard key={product.id} id={product.id} images={product.images} title={product.title} description={product.description} updated_at={product.updated_at}/>
       ))
     )}
-       {/* </div> */}
     </section>
   )
 }

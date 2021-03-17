@@ -5,7 +5,6 @@ import { fetchProductsAction } from './actions'
 
 const productsRef = db.collection('products')
 const usersRef = db.collection('users')
-//firestore(db)のusesではなくproductsからデータをとってくる
 
 export const fetchProducts = (category) => {
   return async (dispatch) => {
@@ -29,13 +28,6 @@ export const saveProduct = (id, title, why, what, description, category, images,
       alert("必須項目を入力してください")
       return false
     }
-
-    // const [user, setUser] = useState(null);
-    // useEffect(() => {
-    //   return auth.onAuthStateChanged(user => {
-    //     setUser(user);
-    //   });
-    // },[]);
 
     const timestamp = FirebaseTimestamp.now()
       const data = {
@@ -91,20 +83,3 @@ export const saveUsers = (username, email, role, uid) => {
       })
   }
 }
-
-// export const likeButton =  () => {
-//   const[ like, setLike] = useState({count: 0, liked: false});
-
-//   const clickLike = () => {
-//     setLike({
-      // count: like.count + (like.liked ? -1 : 1),
-//       liked: !like.liked
-//     });
-//   }
-
-//   return (
-//     <>
-//     button on
-//     </>
-//   )
-// }

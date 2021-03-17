@@ -4,7 +4,6 @@
 }
 .appMain {
   height: 100%;
-  /* background-color: rgb(246,246,244); */
   padding: 16px;
   display: flex;
   text-align: center;
@@ -16,11 +15,3 @@
     margin: 0;
   }
 }
-/* .navContaints {
-  margin: 0 auto;
-} */
-/* @media screen and (max-width: 500px){
-  .NavContants {
-    max-width: 200px;
-  }
-} */
