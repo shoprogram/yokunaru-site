@@ -19,7 +19,6 @@ const Router = () => {
           <Route exact path={"/profile"} component={Profile}/>
           <Route path={"/product/edit(/:id)?"} component={ProductEdit} />
           <Route exact path={"/product/comment/:id"} component={Comment} />
-
         </Auth>
       </Switch>
   )

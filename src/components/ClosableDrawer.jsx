@@ -42,14 +42,6 @@ const ClosableDrawer = (props) => {
 
   const [keyword, setKeyword] = useState("");
 
-  
-  filterList = (e) => { 
-    const updateList = this.state.initialItem.filter((item) => {
-      return item.toLowerCase().search( e.target.value.toLowerCase()) !== -1;
-    })
-    this.setState({items: updateList})
-  }
-
 
   const selectMenu = (event,path) => {
     dispatch(push(path));
@@ -92,7 +84,7 @@ const ClosableDrawer = (props) => {
         <div>
           <div className={classes.searchField}>
             <TextInput
-              fullWidth={false} label={"キーワードを入力"} multiline={false} onChange={filterList(e)} required={false} rows={1} value={keyword} type={"text"}
+              fullWidth={false} label={"キーワードを入力"} multiline={false} onChange={inputKeyword} required={false} rows={1} value={keyword} type={"text"}
             />
             <IconButton onClick={() => dispatch(push('/comingSoon'))}>
               <SearchIcon />

@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useCallback} from 'react'
 import { auth, db, FirebaseTimestamp } from '../firebase';
 import { useSelector, useDispatch } from "react-redux";
-import { makeStyles } from '@material-ui/core';
+import { IconButton, makeStyles } from '@material-ui/core';
 import HeaderComponent from '../components/HeaderComponent';
 import MessageIcon from '@material-ui/icons/Message';
 import Styles from './tempStyles/ProductDetail.module.css';
@@ -9,6 +9,7 @@ import { getProducts } from '../reducks/products/selectors';
 import BeforeHeaderComponent from '../components/BeforeHeaderComponent';
 import { HomeBackButton } from '../components/UIkit';
 import NoImage from '../assets/img/src/no_image.png';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const useStyles = makeStyles((theme) => ({
   detail: {
@@ -142,7 +143,6 @@ const ProductDetail = (props) => {
     };
   }, [id]);
 
-console.log(user)
     const newComment = (e) => {
       e.preventDefault();
       db.collection('products').doc(id).collection("comments").add({
@@ -153,6 +153,34 @@ console.log(user)
       });
       setComment("");
     };
+
+    //like処理
+    const [like, setLike] = useState([]);
+    
+    useEffect(() => {
+      db.collection("products").doc(id).get()
+      .then(snapshot => {
+        setLike(snapshot.data().likeCount);
+      })
+    },[]);
+
+    const likeClick = () => {
+      setLike(
+        like + 1
+      );
+      
+      console.log(like);
+    const data = {
+      likeCount: like,
+    }
+    return db.collection('products').doc(id).update(data, {merge: true})
+      .then(() => {
+
+      }).catch((error) => {
+        throw new Error(error)
+      })
+    }
+  
 
   return (
     <>
@@ -170,6 +198,9 @@ console.log(user)
           </div>
         )}
       </section>
+      <IconButton className={ like.liked ? classes.checkout : ""} onClick={likeClick}>
+            <FavoriteIcon className={classes.likeButton}/>
+        </IconButton>
       <div className="module-spacer--large"/>
       <div className="module-spacer--medium"/>
       <div className="comment-line"/>
