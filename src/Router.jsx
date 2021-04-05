@@ -11,9 +11,9 @@ const Router = () => {
         <Route exact path={"/signin/reset"} component={Reset} />
         <Route exact path={"/before"} component={BeforeSignInHome} />
         <Route exact path={"/search"} component={SearchProducts} />
-        <Route exact path={"/description"} component={Description} />
         <Route exact path={"/comingSoon"} component={ComingSoon} />
         <Route exact path={"/product/original/:id"} component={ProductDetail} />
+        <Route exact path={"/description"} component={Description} />
         <Auth>
           <Route exact path={"(/)?"} component={Home} />
           <Route exact path={"/profile"} component={Profile}/>

@@ -84,7 +84,7 @@ const ClosableDrawer = (props) => {
         <div>
           <div className={classes.searchField}>
             <TextInput
-              fullWidth={false} label={"キーワードを入力"} multiline={false} onChange={inputKeyword} required={false} rows={1} value={keyword} type={"text"}
+              // fullWidth={false} label={"キーワードを入力"} multiline={false} onChange={inputKeyword} required={false} rows={1} value={keyword} type={"text"}
             />
             <IconButton onClick={() => dispatch(push('/comingSoon'))}>
               <SearchIcon />

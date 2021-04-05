@@ -198,9 +198,9 @@ const ProductDetail = (props) => {
           </div>
         )}
       </section>
-      <IconButton className={ like.liked ? classes.checkout : ""} onClick={likeClick}>
+      {/* <IconButton className={ like.liked ? classes.checkout : ""} onClick={likeClick}>
             <FavoriteIcon className={classes.likeButton}/>
-        </IconButton>
+        </IconButton> */}
       <div className="module-spacer--large"/>
       <div className="module-spacer--medium"/>
       <div className="comment-line"/>

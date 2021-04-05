@@ -115,7 +115,7 @@ const ProductCard = (props) => {
         </Typography>
         <Typography 
         className={classes.descriptionSpace}
-        onClick={() => dispatch(push('/product/origional/'+props.id))} 
+        onClick={() => dispatch(push('/product/original/'+props.id))} 
         >
           {props.description}
         </Typography>
